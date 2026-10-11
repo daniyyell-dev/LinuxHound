@@ -62,13 +62,12 @@ coverage is not a clean result.
 
 ## User guide
 
-Continue with the [user guide](GUIDE.md) for
-[Docker installation](GUIDE.md#docker),
-[investigating paths and comparing snapshots](GUIDE.md#what-the-results-show),
-and [more graph examples](GUIDE.md#graph-examples). It also explains
-[GNN models and training](GUIDE.md#graph-neural-network-gnn),
-[collection scope and limitations](GUIDE.md#coverage-privacy-and-limitations),
-and [development](GUIDE.md#development-and-license).
+- [Docker installation and running LinuxHound](GUIDE.md#docker)
+- [Investigating paths and comparing snapshots](GUIDE.md#what-the-results-show)
+- [Graph examples](GUIDE.md#graph-examples)
+- [Graph Neural Network (GNN) models and training](GUIDE.md#graph-neural-network-gnn)
+- [Collection scope, privacy and limitations](GUIDE.md#coverage-privacy-and-limitations)
+- [Development](GUIDE.md#development-and-license)
 
 LinuxHound is licensed under [Apache-2.0](LICENSE). Attribution information is
 available in [NOTICE](NOTICE).
