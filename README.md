@@ -22,10 +22,13 @@ Following a connection helps explain access, but does not establish that an expl
 
 ## Quick start: Linux
 
-To begin, open the checkout on a Linux host with Python 3.9 or newer. Create a
-virtual environment, install LinuxHound and run your first collection:
+To begin on a Linux host with Git and Python 3.9 or newer, clone the repository
+and enter its directory. Then create a virtual environment, install LinuxHound
+and run your first collection:
 
 ```sh
+git clone https://github.com/daniyyell-dev/LinuxHound.git
+cd LinuxHound
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install .
