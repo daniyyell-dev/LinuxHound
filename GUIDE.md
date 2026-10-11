@@ -210,7 +210,7 @@ python scripts/update_gtfobins.py --output catalog.json
 linuxhound techniques-match report.json --catalog catalog.json --output matched.json
 ```
 
-GTFOBins import is an explicit download of reference metadata, excluding exploit
+[GTFOBins](https://gtfobins.org/) import is an explicit download of reference metadata, excluding exploit
 recipes. A reference match is not vulnerability validation. Models trained with
 a catalog require its exact frozen checksum at inference. Normal collection and
 inference remain offline. Third-party reference data is not bundled.
@@ -218,6 +218,23 @@ inference remain offline. Third-party reference data is not bundled.
 For remote viewing, leave the listener on loopback and use
 `ssh -L 8765:127.0.0.1:8765 USER@HOST`. Explicit host-IP serving uses plain HTTP;
 use only a trusted network and keep the token URL private.
+
+## References and acknowledgements
+
+[BloodHound](https://bloodhound.specterops.io/home) is the reference for LinuxHound's
+graph-based investigation approach. Its
+[OpenGraph framework](https://bloodhound.specterops.io/opengraph/overview) supports
+custom resource types and relationships. LinuxHound's `export-opengraph` command
+produces those objects with export fidelity notes. Conditional privilege edges
+remain non-traversable, so BloodHound pathfinding does not treat unresolved
+prerequisites as established access.
+
+[GTFOBins](https://gtfobins.org/) documents ways Unix executables can be used
+under particular permission and execution conditions. LinuxHound's optional
+import retains reference metadata and prerequisite information, excluding exploit
+recipes. It does not execute techniques or bundle the catalog, and a reference
+match does not make the executable a verified vulnerability. The demo model is
+not trained on GTFOBins data.
 
 ## Coverage, privacy and limitations
 

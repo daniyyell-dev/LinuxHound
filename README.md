@@ -69,5 +69,15 @@ coverage is not a clean result.
 - [Collection scope, privacy and limitations](GUIDE.md#coverage-privacy-and-limitations)
 - [Development](GUIDE.md#development-and-license)
 
+## References and acknowledgements
+
+[BloodHound](https://bloodhound.specterops.io/home) inspired the relationship graph
+and attack-path investigation approach. LinuxHound also provides an export for
+BloodHound's [OpenGraph framework](https://bloodhound.specterops.io/opengraph/overview).
+
+[GTFOBins](https://gtfobins.org/) provides the Unix executable reference used by
+LinuxHound's optional technique matching. Catalog matches provide context for
+reviewing permissions; they do not establish that a path is exploitable.
+
 LinuxHound is licensed under [Apache-2.0](LICENSE). Attribution information is
 available in [NOTICE](NOTICE).

@@ -4,3 +4,8 @@ Licensed under the Apache License, Version 2.0.
 The offline viewer bundles no third-party JavaScript, fonts or images.
 Optional PyTorch and SafeTensors dependencies are installed separately.
 GTFOBins reference data is fetched explicitly by the user and is not bundled.
+
+Project references:
+BloodHound: https://bloodhound.specterops.io/home
+OpenGraph: https://bloodhound.specterops.io/opengraph/overview
+GTFOBins: https://gtfobins.org/
