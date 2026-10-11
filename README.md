@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="branding/linuxhound-logo.svg" width="792" alt="LinuxHound logo with white Linux and red Hound wordmark">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="branding/linuxhound-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="branding/linuxhound-logo.svg">
+    <img src="branding/linuxhound-logo.svg" width="792" alt="LinuxHound logo and red wordmark">
+  </picture>
 </p>
 
 # LinuxHound

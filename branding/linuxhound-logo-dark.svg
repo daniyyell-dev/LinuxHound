@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="792" height="226" viewBox="0 0 792 226" role="img" aria-labelledby="title">
+  <title id="title">LinuxHound</title>
+  <g transform="translate(24 35) scale(3.3)">
+    <path d="M8 10 21 6l8 8 11 2-4 13-11 12-12-4-5-13Z" fill="#38080e" stroke="#ff182b" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="m8 10 6 14 11 3 11 2M21 6l1 15 7-7M25 27v14" fill="none" stroke="#ff182b" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="m29 20 7-1-2 5Z" fill="#ffffff"/>
+    <circle cx="25" cy="27" r="3.2" fill="#ffffff"/>
+  </g>
+  <text x="238" y="153" fill="#f5f5f5" font-family="Inter, Arial, Helvetica, sans-serif" font-size="90" font-weight="700" letter-spacing="-3">Linux<tspan fill="#ff2636">Hound</tspan></text>
+</svg>
