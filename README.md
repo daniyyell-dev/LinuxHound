@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/linuxhound-logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/linuxhound-logo.svg">
-    <img src="images/linuxhound-logo.svg" width="792" alt="LinuxHound logo and red wordmark">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-logo.svg">
+    <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-logo.svg" width="792" alt="LinuxHound logo and red wordmark">
   </picture>
 </p>
 
@@ -13,16 +13,16 @@
 
 <p align="center">
   <a href="https://github.com/daniyyell-dev/LinuxHound/releases/latest"><img src="https://img.shields.io/github/v/release/daniyyell-dev/LinuxHound?style=flat&amp;label=release&amp;color=e76f2e" alt="Latest GitHub release"></a>
-  <a href="pyproject.toml"><img src="https://img.shields.io/badge/python-3.9%2B-1685bd?style=flat" alt="Python 3.9 or newer"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-c62138?style=flat" alt="Apache-2.0 license"></a>
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/pyproject.toml"><img src="https://img.shields.io/badge/python-3.9%2B-1685bd?style=flat" alt="Python 3.9 or newer"></a>
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-c62138?style=flat" alt="Apache-2.0 license"></a>
   <a href="https://github.com/daniyyell-dev/LinuxHound/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/daniyyell-dev/LinuxHound/tests.yml?branch=main&amp;style=flat&amp;label=checks" alt="GitHub source checks"></a>
 </p>
 
 <p align="center">
-  <a href="GUIDE.md"><strong>Documentation</strong></a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md"><strong>Documentation</strong></a> &middot;
   <a href="#quick-start-linux">Quick start</a> &middot;
-  <a href="GUIDE.md#docker">Docker</a> &middot;
-  <a href="GUIDE.md#graph-neural-network-gnn">GNN</a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#docker">Docker</a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#graph-neural-network-gnn">GNN</a> &middot;
   <a href="https://github.com/daniyyell-dev/LinuxHound/releases">Releases</a> &middot;
   <a href="https://github.com/daniyyell-dev/LinuxHound/issues">Issues</a>
 </p>
@@ -31,7 +31,7 @@
 targets. Saved HTML reports open in a modern desktop browser. The demo
 can run elsewhere with Python; it does not audit that operating system.
 
-![LinuxHound environment graph showing demo accounts, services and files](images/screenshots/environment-overview.jpg)
+![LinuxHound environment graph showing demo accounts, services and files](https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/screenshots/environment-overview.jpg)
 
 The graph above comes from the LinuxHound demo. Red relationships mark modeled
 trust boundaries, while dashed relationships retain unresolved prerequisites.
@@ -56,7 +56,9 @@ When collection finishes, LinuxHound feeds the results directly into the UI.
 Each run saves `snapshot.json`,
 `report.json` and `index.html` under `linuxhound-results/`. `--serve --open` opens
 a localhost viewer. On a headless host, omit those flags and copy the HTML to a
-trusted desktop. The package is not yet published to PyPI.
+trusted desktop. For installation from the Python Package Index, use
+`python -m pip install linuxhound`, or `python -m pip install 'linuxhound[gnn]'`
+to include the optional neural dependencies.
 
 If you want to explore the interface first, open the demo without
 collecting information from a host:
@@ -94,13 +96,13 @@ that LinuxHound does not provide.
 
 ## Documentation
 
-Continue with the [user guide](GUIDE.md) for
-[investigating results](GUIDE.md#what-the-results-show),
-[graph examples](GUIDE.md#graph-examples) and
-[model training](GUIDE.md#graph-neural-network-gnn).
-It also covers [comparison details](GUIDE.md#tool-comparison),
-[collection scope and limitations](GUIDE.md#coverage-privacy-and-limitations),
-and [development](GUIDE.md#development-and-license).
+Continue with the [user guide](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md) for
+[investigating results](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#what-the-results-show),
+[graph examples](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#graph-examples) and
+[model training](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#graph-neural-network-gnn).
+It also covers [comparison details](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#tool-comparison),
+[collection scope and limitations](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#coverage-privacy-and-limitations),
+and [development](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#development-and-license).
 
 ## References and acknowledgements
 
@@ -112,5 +114,5 @@ BloodHound's [OpenGraph framework](https://bloodhound.specterops.io/opengraph/ov
 LinuxHound's optional technique matching. Catalog matches provide context for
 reviewing permissions; they do not establish that a path is exploitable.
 
-LinuxHound is licensed under [Apache-2.0](LICENSE). Attribution information is
-available in [NOTICE](NOTICE).
+LinuxHound is licensed under [Apache-2.0](https://github.com/daniyyell-dev/LinuxHound/blob/main/LICENSE). Attribution information is
+available in [NOTICE](https://github.com/daniyyell-dev/LinuxHound/blob/main/NOTICE).

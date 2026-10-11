@@ -1,0 +1,74 @@
+name: Publish to PyPI
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag to upload
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: pypi-publish
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.tag }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check release version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          python - <<'PY'
+          import os, tomllib
+          from linuxhound.version import VERSION
+          with open('pyproject.toml', 'rb') as source:
+              metadata = tomllib.load(source)
+          assert os.environ['RELEASE_TAG'] == 'v' + metadata['project']['version']
+          assert VERSION == metadata['project']['version']
+          PY
+      - run: python scripts/check_public_release.py
+      - run: python -m unittest discover -s tests -q
+      - run: node tests/test_viewer_graph.js
+      - run: node --check linuxhound/viewer.js
+      - run: python -m pip install build twine
+      - run: python -m build
+      - run: python -m twine check --strict dist/*
+      - name: Check installed wheel
+        run: |
+          python -m venv /tmp/linuxhound-wheel
+          /tmp/linuxhound-wheel/bin/python -m pip install --no-deps dist/*.whl
+          cd /tmp
+          /tmp/linuxhound-wheel/bin/linuxhound demo --output-dir /tmp/linuxhound-smoke
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+          if-no-files-found: error
+  publish:
+    needs: build
+    if: github.repository == 'daniyyell-dev/LinuxHound'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/linuxhound/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+      - name: Publish distributions
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33

@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {'.gitignore', 'MANIFEST.in', 'pyproject.toml', 'LICENSE', 'NOTICE',
               'README.md', 'GUIDE.md', 'Dockerfile', '.dockerignore'}
 SOURCE_DIRS = {'linuxhound', 'tests', 'scripts', 'images'}
-EXTRA_FILES = {'.github/workflows/tests.yml'}
+EXTRA_FILES = {'.github/workflows/tests.yml', '.github/workflows/publish.yml'}
 MODEL_FILES = {'linuxhound/models/demo-path.safetensors', 'linuxhound/models/demo-path.json'}
 IMAGE_FILES = {
     'images/screenshots/attack-path.jpg',

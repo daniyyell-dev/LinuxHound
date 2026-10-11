@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linuxhound"
-version = "0.3.0"
+version = "0.3.1"
 description = "Read-only Linux permissions and conditional privilege-path auditor"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -13,6 +13,12 @@ dependencies = []
 
 [project.optional-dependencies]
 gnn = ["torch>=2.2,<3", "safetensors>=0.4,<1", "numpy>=1.26,<3"]
+
+[project.urls]
+Homepage = "https://github.com/daniyyell-dev/LinuxHound"
+Documentation = "https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md"
+Repository = "https://github.com/daniyyell-dev/LinuxHound"
+Issues = "https://github.com/daniyyell-dev/LinuxHound/issues"
 
 [project.scripts]
 linuxhound = "linuxhound.cli:main"
