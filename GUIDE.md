@@ -219,6 +219,82 @@ For remote viewing, leave the listener on loopback and use
 `ssh -L 8765:127.0.0.1:8765 USER@HOST`. Explicit host-IP serving uses plain HTTP;
 use only a trusted network and keep the token URL private.
 
+## Tool comparison
+
+This comparison was reviewed on 11 October 2026. It covers LinuxHound's current
+source, the linked upstream commits for LinPEAS, RootHound and Lynis, and the
+published privmap 2.0.0 package. It describes documented features and inspected
+interfaces rather than results from a shared detection benchmark.
+
+| Feature | LinuxHound | [LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/622f18f66fdec2b2e3a36d2cb809fb3c961177e1) | [RootHound](https://github.com/Noz2/RootHound/tree/d47f44cfac59b8faea61a689b8e909397087f344) | [privmap](https://pypi.org/project/privmap/2.0.0/) | [Lynis](https://github.com/CISOfy/lynis/tree/9319416fa0726369ab0a48f686155a90363f3f9c) |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Native Linux collection | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Privilege graph across collected accounts | ✓ | ✗ | ✗ | ✓ | ✗ |
+| Interactive, standalone HTML graph | ✓ | ✗ | ✓ | ✗ | ✗ |
+| Graph-based multi-hop privilege chains | ✓ | ✗ | ✓ | ✓ | ✗ |
+| Before/after path comparison that accounts for missing coverage | ✓ | ✗ | ✗ | ✗ | ✗ |
+| BloodHound OpenGraph export | ✓ | ✗ | ✗ | ✗ | ✗ |
+| Optional Graph Neural Network review ordering | ✓* | ✗ | ✗ | ✗ | ✗ |
+| General hardening and compliance audit | ✗ | ✗ | ✗ | ✗ | ✓ |
+
+✓ means a feature is present in the reviewed implementation. ✗ means no matching
+built-in feature was found in the reviewed documentation and interface; it does
+not rule out a plugin, manual workflow or later version. The table covers the
+open-source tools, excluding commercial services. A CLI path or JSON graph is
+not counted as an interactive HTML viewer, and an offline snapshot is not counted
+as a before/after comparison that distinguishes missing evidence from a fix.
+
+*The GNN checkmark means the feature exists. LinuxHound's bundled model is an
+uncalibrated synthetic demo, with no validated real-world accuracy. Its presence
+is not evidence of better detection than deterministic rules.*
+
+### Where LinuxHound is a better fit
+
+LinuxHound combines an account-to-resource graph with a standalone browser UI.
+You can inspect a permission, follow the candidate path it contributes to and
+review its assumptions without transferring the report to a graph database.
+The collector excludes secret contents, while reporting coverage gaps and
+retaining prerequisites on conditional paths.
+
+Its comparison engine checks the coverage and scope of both snapshots before
+calling an edge or path removed. If a later scan cannot read the relevant policy
+or filesystem metadata, the result remains incomplete rather than being counted
+as a successful fix. This is a concrete advantage for reviewing hardening changes;
+it does not establish that the entire host is secure.
+
+### Where the other tools fit
+
+[LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/622f18f66fdec2b2e3a36d2cb809fb3c961177e1/linPEAS) provides broader privilege-escalation
+enumeration, including exploit suggestions and optional credential searches.
+Its documented interface focuses on enumeration output rather than an interactive
+account-to-resource graph. LinuxHound does not replace that breadth of checks.
+
+[RootHound](https://github.com/Noz2/RootHound/tree/d47f44cfac59b8faea61a689b8e909397087f344) provides an offline attack-path graph,
+confidence coloring and technique commands. It accepts LinPEAS output and also
+ships its own [HoundCollector](https://github.com/Noz2/RootHound/blob/d47f44cfac59b8faea61a689b8e909397087f344/HoundCollector.sh),
+which collects signals for the invoking user. It earns checkmarks for native
+collection, HTML visualization and multi-hop chains; LinuxHound instead emphasizes
+relationships across collected accounts, explicit prerequisites and coverage-aware
+change review.
+
+[privmap 2.0.0](https://pypi.org/project/privmap/2.0.0/) also collects Linux permission metadata
+and constructs a directed graph across users. Its published CLI supports path
+output, JSON and Markdown reports, graph JSON export, offline snapshots and a
+severity-based CI exit code. LinuxHound's distinction is the interactive HTML
+investigation workflow and coverage-aware path comparison, not being the only
+Linux permission-graph tool.
+
+[Lynis](https://github.com/CISOfy/lynis/tree/9319416fa0726369ab0a48f686155a90363f3f9c) performs a broader system hardening and compliance
+audit. It is a better fit for general host controls and hardening recommendations.
+The standalone open-source tool does not provide the interactive permission-path
+graph compared here; Lynis Enterprise has additional reporting capabilities that
+are outside this table.
+
+These differences make LinuxHound useful for evidence-led permission investigations.
+A claim of higher detection accuracy, fewer false positives or better performance
+would require independently labeled hosts and a reproducible benchmark; this
+feature comparison does not establish those claims.
+
 ## References and acknowledgements
 
 [BloodHound](https://bloodhound.specterops.io/home) is the reference for LinuxHound's

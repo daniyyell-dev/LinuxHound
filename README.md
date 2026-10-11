@@ -64,8 +64,29 @@ The bundled model is an uncalibrated synthetic demonstration. Its scores help
 order reviews; they do not prove vulnerabilities or safety. Missing collection
 coverage is not a clean result.
 
+## Compare Linux tools
+
+LinuxHound is a better fit when you need to follow permissions across accounts,
+inspect a path's evidence in a browser and review what changed after hardening.
+The tools below serve different workflows, so the comparison includes strengths
+that LinuxHound does not provide.
+
+| Feature | LinuxHound | [LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/622f18f66fdec2b2e3a36d2cb809fb3c961177e1) | [RootHound](https://github.com/Noz2/RootHound/tree/d47f44cfac59b8faea61a689b8e909397087f344) | [privmap](https://pypi.org/project/privmap/2.0.0/) | [Lynis](https://github.com/CISOfy/lynis/tree/9319416fa0726369ab0a48f686155a90363f3f9c) |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Native Linux collection | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Privilege graph across collected accounts | ✓ | ✗ | ✗ | ✓ | ✗ |
+| Interactive, standalone HTML graph | ✓ | ✗ | ✓ | ✗ | ✗ |
+| Before/after path comparison that accounts for missing coverage | ✓ | ✗ | ✗ | ✗ | ✗ |
+| General hardening and compliance audit | ✗ | ✗ | ✗ | ✗ | ✓ |
+
+✓ means the feature is provided; ✗ means no matching built-in feature was found
+in the reviewed documentation and interface. This compares open-source editions,
+not detection accuracy. See the [comparison notes](GUIDE.md#tool-comparison)
+for sources, scope and experimental features.
+
 ## User guide
 
+- [Tool comparison and feature notes](GUIDE.md#tool-comparison)
 - [Docker installation and running LinuxHound](GUIDE.md#docker)
 - [Investigating paths and comparing snapshots](GUIDE.md#what-the-results-show)
 - [Graph examples](GUIDE.md#graph-examples)
