@@ -12,7 +12,7 @@ license = "Apache-2.0"
 dependencies = []
 
 [project.optional-dependencies]
-gnn = ["torch>=2.2,<3", "safetensors>=0.4,<1"]
+gnn = ["torch>=2.2,<3", "safetensors>=0.4,<1", "numpy>=1.26,<3"]
 
 [project.scripts]
 linuxhound = "linuxhound.cli:main"

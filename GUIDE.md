@@ -254,6 +254,6 @@ node tests/test_viewer_graph.js
 python scripts/check_public_release.py
 ```
 
-Core collection and rendering use the Python standard library. PyTorch and
-SafeTensors are optional. README.md and GUIDE.md are the public documentation; screenshots use
+Core collection and rendering use the Python standard library. The optional GNN
+dependencies include PyTorch, SafeTensors and NumPy. README.md and GUIDE.md are the public documentation; screenshots use
 fictional data. Licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE).
