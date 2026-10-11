@@ -228,21 +228,14 @@ interfaces rather than results from a shared detection benchmark.
 
 | Feature | LinuxHound | [LinPEAS](https://github.com/peass-ng/PEASS-ng/tree/622f18f66fdec2b2e3a36d2cb809fb3c961177e1) | [RootHound](https://github.com/Noz2/RootHound/tree/d47f44cfac59b8faea61a689b8e909397087f344) | [privmap](https://pypi.org/project/privmap/2.0.0/) | [Lynis](https://github.com/CISOfy/lynis/tree/9319416fa0726369ab0a48f686155a90363f3f9c) |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| Native Linux collection | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Privilege graph across collected accounts | ✓ | ✗ | ✗ | ✓ | ✗ |
-| Interactive, standalone HTML graph | ✓ | ✗ | ✓ | ✗ | ✗ |
-| Graph-based multi-hop privilege chains | ✓ | ✗ | ✓ | ✓ | ✗ |
-| Before/after path comparison that accounts for missing coverage | ✓ | ✗ | ✗ | ✗ | ✗ |
-| BloodHound OpenGraph export | ✓ | ✗ | ✗ | ✗ | ✗ |
-| Optional Graph Neural Network review ordering | ✓* | ✗ | ✗ | ✗ | ✗ |
-| General hardening and compliance audit | ✗ | ✗ | ✗ | ✗ | ✓ |
-
-✓ means a feature is present in the reviewed implementation. ✗ means no matching
-built-in feature was found in the reviewed documentation and interface; it does
-not rule out a plugin, manual workflow or later version. The table covers the
-open-source tools, excluding commercial services. A CLI path or JSON graph is
-not counted as an interactive HTML viewer, and an offline snapshot is not counted
-as a before/after comparison that distinguishes missing evidence from a fix.
+| Native Linux collection | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Privilege graph across collected accounts | ✅ | ❌ | ❌ | ✅ | ❌ |
+| Interactive, standalone HTML graph | ✅ | ❌ | ✅ | ❌ | ❌ |
+| Graph-based multi-hop privilege chains | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Before/after path comparison that accounts for missing coverage | ✅ | ❌ | ❌ | ❌ | ❌ |
+| BloodHound OpenGraph export | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Optional Graph Neural Network review ordering | ✅* | ❌ | ❌ | ❌ | ❌ |
+| General hardening and compliance audit | ❌ | ❌ | ❌ | ❌ | ✅ |
 
 *The GNN checkmark means the feature exists. LinuxHound's bundled model is an
 uncalibrated synthetic demo, with no validated real-world accuracy. Its presence
