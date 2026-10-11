@@ -1,0 +1,54 @@
+# Local evidence, checkpoints and reference datasets
+/artifacts/*
+/examples/lab-live/
+/examples/validation/
+/examples/synthetic/*
+
+# Secrets and private working material
+.env
+.env.*
+*.pem
+*.key
+*.keys
+*.p12
+*.pfx
+*.pt
+*.pth
+*.safetensors
+!/linuxhound/models/demo-path.safetensors
+*creds*
+*credentials*
+*prompt*
+*PROMPT*
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+.audit-private/
+.private/
+
+# Build, editor and interpreter output
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+
+# One-command local collection and demos
+/linuxhound-results/
+
+/docs/
+/validation/
+
+*.md
+!/README.md
+!/GUIDE.md

@@ -1,0 +1,15 @@
+include LICENSE NOTICE README.md GUIDE.md pyproject.toml
+recursive-include linuxhound *.py *.html *.css *.js
+include linuxhound/models/demo-path.safetensors linuxhound/models/demo-path.json
+prune artifacts
+prune examples
+prune validation
+prune tests
+prune docs
+prune scripts
+include branding/screenshots/attack-path.jpg branding/screenshots/graph-neural-network.jpg
+include branding/linuxhound-mark.svg
+include branding/screenshots/environment-overview.jpg branding/screenshots/root-relationships.jpg
+include branding/screenshots/file-relationships.jpg branding/screenshots/filesystem-relationships.jpg
+prune .git
+global-exclude __pycache__ *.py[cod] .DS_Store

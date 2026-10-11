@@ -1,0 +1,14 @@
+**
+!Dockerfile
+!pyproject.toml
+!README.md
+!LICENSE
+!NOTICE
+!linuxhound/
+!linuxhound/*.py
+!linuxhound/*.js
+!linuxhound/*.css
+!linuxhound/*.html
+!linuxhound/models/
+!linuxhound/models/demo-path.safetensors
+!linuxhound/models/demo-path.json

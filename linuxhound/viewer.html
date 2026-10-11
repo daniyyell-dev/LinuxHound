@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>@@TOOL@@ — Attack path explorer</title>
+<style>@@VIEWER_CSS@@</style>
+</head>
+<body>
+<header class="topbar">
+<div class="brand" aria-label="LinuxHound"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10 21 6l8 8 11 2-4 13-11 12-12-4-5-13Z" fill="#38080e" stroke="#ff182b" stroke-width="2.4" stroke-linejoin="round"/><path d="m8 10 6 14 11 3 11 2M21 6l1 15 7-7M25 27v14" fill="none" stroke="#ff182b" stroke-width="2.4" stroke-linejoin="round"/><path d="m29 20 7-1-2 5Z" fill="#ffffff"/><circle cx="25" cy="27" r="3.2" fill="#ffffff"/></svg><span>Linux<em>Hound</em></span>
+</div>
+<span class="tag">@@VERSION@@ · offline</span>
+<span class="muted">Investigations / Local snapshot</span>
+<span class="host" id="host">
+</span>
+</header>
+<div class="workspace">
+<nav class="tabs" aria-label="Investigation">
+<button class="active" data-pane="explore">Explore</button>
+<button data-pane="paths">Attack paths</button>
+<button data-pane="findings">Findings</button>
+<button data-pane="targets">Targets</button>
+<button data-pane="gnn">GNN</button>
+</nav>
+<aside class="sidebar">
+<section class="panel pane" id="pane-explore">
+<h2>Resources</h2>
+<div class="stat-row">
+<div class="stat">
+<b id="stat-nodes">0</b>
+<small>RESOURCES</small>
+</div>
+<div class="stat">
+<b id="stat-paths">0</b>
+<small>PATHS</small>
+</div>
+<div class="stat">
+<b id="stat-findings">0</b>
+<small>TO REVIEW</small>
+</div>
+</div>
+<label for="search">Search resources</label>
+<input id="search" type="text" placeholder="Name, path or ID">
+<label for="type">Resource type</label>
+<select id="type">
+<option value="">All types</option>
+</select>
+<label class="check">
+<input id="running" type="checkbox">Running services only</label>
+<div class="actions">
+<button id="apply-filter" class="primary">Show matches</button>
+<button id="overview">All resources</button>
+</div>
+<div class="actions">
+<button id="isolated">Disconnected resources</button>
+</div>
+<p class="muted" id="node-count">
+</p>
+<div id="nodes" class="list">
+</div>
+<button id="more-nodes" hidden>More results</button>
+</section>
+<section class="panel pane" id="pane-paths" hidden>
+<h2 style="margin-top:0">Pathfinding</h2>
+<label for="query-kind">Trace mode</label>
+<select id="query-kind">
+<option value="attack">Candidate attack path</option>
+<option value="relationship">Relationship path</option>
+</select>
+<label for="direction">Relationship direction</label>
+<select id="direction" disabled>
+<option value="outgoing">Follow outgoing arrows</option>
+<option value="both">Explore both directions</option>
+</select>
+<label for="source">Starting resource</label>
+<select id="source">
+</select>
+<label for="target">Target resource</label>
+<select id="target">
+</select>
+<div class="actions">
+<button id="find-path" class="primary">Find paths</button>
+<button id="risk-overview">All attack paths</button>
+</div>
+<div class="hint" id="query-hint">Queries use evidence-backed candidate chains. Read access or a shared group alone is not treated as privilege escalation. Dashed influence requires the listed prerequisites.</div>
+<h3>Candidate attack chains</h3>
+<div id="gnn-controls" hidden>
+<label for="path-order">Review order</label>
+<select id="path-order"><option value="evidence">Evidence order</option><option value="gnn">GNN assisted · experimental</option></select>
+<p class="hint" id="gnn-notice"></p>
+</div>
+<label for="conclusion">Conclusion</label>
+<select id="conclusion">
+<option value="">All conclusions</option>
+</select>
+<p id="path-count" class="muted">
+</p>
+<div id="paths" class="list">
+</div>
+</section>
+<section class="panel pane" id="pane-findings" hidden>
+<h2 style="margin-top:0">Configuration review</h2>
+<p class="muted">Priority reflects potential impact. “Needs review” is not a verified vulnerability.</p>
+<label for="priority">Priority</label>
+<select id="priority">
+<option value="">All priorities</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="info">Information</option>
+</select>
+<p id="finding-count" class="muted">
+</p>
+<div id="findings" class="list">
+</div>
+<div class="divider">
+</div>
+<h2>Before / after</h2>
+<div id="changes">
+</div>
+</section>
+<section class="panel pane" id="pane-targets" hidden>
+<h2 style="margin-top:0">Target overview</h2>
+<p class="muted">Investigate the relationships and candidate chains feeding into a resource.</p>
+<label for="summary-target">Target resource</label>
+<select id="summary-target">
+</select>
+<label for="summary-scope">Show contributors</label>
+<select id="summary-scope">
+<option value="incoming">Incoming relationships</option>
+<option value="candidate">Candidate attack chains</option>
+</select>
+<div class="actions">
+<button id="show-summary" class="primary">Show target overview</button>
+</div>
+<div class="hint">Counts show unique contributing resources, not a risk score or exposure percentage. Select a counted group to reveal its original nodes and evidence.</div>
+<h3>Relationship groups</h3>
+<div id="summary-groups" class="list">
+</div>
+</section>
+<section class="panel pane" id="pane-gnn" hidden>
+<h2>Graph learning</h2>
+<p class="muted">Local feature extraction and experimental review ordering.</p>
+<h3>Model status</h3>
+<p id="gnn-status" class="muted"></p>
+<div class="actions"><button id="gnn-review" class="primary">Review ranked paths</button><button id="gnn-export">Export features</button></div>
+<p id="gnn-feedback" class="muted" role="status" aria-live="polite"></p>
+<h3>Feature inventory</h3>
+<label for="gnn-feature-mode">Show feature values</label>
+<select id="gnn-feature-mode"><option value="nonzero">Nonzero values</option><option value="zero">Known zero values</option><option value="known">All known values</option><option value="unknown">Unobserved / not applicable</option></select>
+<div id="gnn-feature-summary"></div>
+<label for="gnn-feature-search">Find a feature</label>
+<input id="gnn-feature-search" placeholder="Permissions, sandbox, mounts…">
+<div id="gnn-feature-list" class="list"></div>
+<p class="hint">No secret contents or command arguments are feature inputs. Missing values carry explicit masks. Scores never change evidence or prove safety.</p>
+</section>
+</aside>
+<main class="graph-area">
+<div class="graph-header">
+<div>
+<h1 id="graph-title">Environment overview</h1>
+<p id="graph-subtitle">All collected resources, including disconnected nodes</p>
+</div>
+<div class="toolbar">
+<button id="fit">Fit graph</button>
+<button id="zoom-in" aria-label="Zoom in">+</button>
+<button id="zoom-out" aria-label="Zoom out">−</button>
+<button id="layout">Reset layout</button>
+<button id="motion" aria-pressed="true">Motion on</button>
+<button id="labels" aria-pressed="false">Show labels</button>
+<button id="save-svg">Save SVG</button>
+</div>
+</div>
+<div id="chain-banner" class="steps-bar">
+</div>
+<div class="canvas">
+<svg id="graph" role="img" aria-label="Linux permissions and conditional attack paths">
+</svg>
+<div class="empty" id="empty" hidden>No resources match this view.</div>
+</div>
+<div class="legend">
+<span>
+<i class="dot">
+</i>Account / group</span>
+<span>
+<i class="dot service">
+</i>Service / job</span>
+<span>
+<i class="dot gray">
+</i>File / host</span>
+<span>
+<i class="dot orange">
+</i>Container</span>
+<span>
+<i class="dot cyan">
+</i>Selected relationships</span>
+<span>
+<i class="dot red">
+</i>Trust boundary / finding</span>
+<span>Red line: modeled trust boundary · dashed: conditional · outer ring: uid 0</span>
+</div>
+<div class="graph-status">
+<span id="graph-count">
+</span>
+<span>Drag nodes or canvas · scroll to zoom · double-click node to expand</span>
+</div>
+</main>
+<aside class="inspector">
+<div class="inspector-title">Resource inspector</div>
+<div id="detail" class="detail">
+<div class="instructions">Select a node, relationship or finding.<br>
+<br>Every resource remains graphable, even when it has no collected relationships.<br>
+<br>Candidate attack paths are conditional unless independent validation was supplied. Missing collection coverage cannot establish safety.</div>
+</div>
+</aside>
+</div>
+<script type="application/json" id="report">@@REPORT@@</script>
+<script>@@GRAPH_JS@@</script>
+<script>@@VIEWER_JS@@</script>
+</body>
+</html>

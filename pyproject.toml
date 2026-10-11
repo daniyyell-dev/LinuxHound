@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77,<83"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linuxhound"
+version = "0.3.0"
+description = "Read-only Linux permissions and conditional privilege-path auditor"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+dependencies = []
+
+[project.optional-dependencies]
+gnn = ["torch>=2.2,<3", "safetensors>=0.4,<1"]
+
+[project.scripts]
+linuxhound = "linuxhound.cli:main"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["linuxhound*"]
+
+[tool.setuptools.package-data]
+linuxhound = ["viewer.html", "viewer.css", "graph.js", "viewer.js", "models/demo-path.safetensors", "models/demo-path.json"]
