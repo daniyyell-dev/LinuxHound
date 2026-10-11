@@ -52,23 +52,23 @@ serves only the selected HTML on loopback; its private token URL grants access.
 Start by selecting an account. The graph highlights its incoming and outgoing
 relationships so you can follow how other resources connect to it.
 
-![Root account relationships in the demo](branding/screenshots/root-relationships.jpg)
+![Root account relationships in the demo](images/screenshots/root-relationships.jpg)
 
 Next, select a file to follow its ownership, group membership and job references.
 These relationships help explain who controls the file and which jobs may consume it.
 
-![Selected backup file and its relationships](branding/screenshots/file-relationships.jpg)
+![Selected backup file and its relationships](images/screenshots/file-relationships.jpg)
 
 The filesystem view below retains containment and symlink relationships from the
 demo graph. It shows where resources sit and how a link points to another path.
 
-![Filesystem containment and symlink relationships](branding/screenshots/filesystem-relationships.jpg)
+![Filesystem containment and symlink relationships](images/screenshots/filesystem-relationships.jpg)
 
 Following the candidate chain `backup → backup.py → backup.service → root`
 connects a writable file to a service running as root. The inspector explains
 the supporting evidence and the prerequisites that keep this path conditional.
 
-![Conditional root-job path and supporting evidence](branding/screenshots/attack-path.jpg)
+![Conditional root-job path and supporting evidence](images/screenshots/attack-path.jpg)
 
 ## Graph Neural Network (GNN)
 
@@ -77,7 +77,7 @@ python -m pip install '.[gnn]'
 linuxhound demo --gnn --open
 ```
 
-![Synthetic Graph Neural Network review ordering and uncalibrated path score](branding/screenshots/graph-neural-network.jpg)
+![Synthetic Graph Neural Network review ordering and uncalibrated path score](images/screenshots/graph-neural-network.jpg)
 
 *The demo attaches neural scores to existing paths. Evidence and conditional
 classifications remain unchanged—even when a model suggests a different effect.*

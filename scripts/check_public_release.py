@@ -9,16 +9,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {'.gitignore', 'MANIFEST.in', 'pyproject.toml', 'LICENSE', 'NOTICE',
               'README.md', 'GUIDE.md', 'Dockerfile', '.dockerignore'}
-SOURCE_DIRS = {'linuxhound', 'tests', 'scripts', 'branding'}
+SOURCE_DIRS = {'linuxhound', 'tests', 'scripts', 'images'}
 EXTRA_FILES = {'.github/workflows/tests.yml'}
 MODEL_FILES = {'linuxhound/models/demo-path.safetensors', 'linuxhound/models/demo-path.json'}
 IMAGE_FILES = {
-    'branding/screenshots/attack-path.jpg',
-    'branding/screenshots/graph-neural-network.jpg',
-    'branding/screenshots/environment-overview.jpg',
-    'branding/screenshots/root-relationships.jpg',
-    'branding/screenshots/file-relationships.jpg',
-    'branding/screenshots/filesystem-relationships.jpg',
+    'images/screenshots/attack-path.jpg',
+    'images/screenshots/graph-neural-network.jpg',
+    'images/screenshots/environment-overview.jpg',
+    'images/screenshots/root-relationships.jpg',
+    'images/screenshots/file-relationships.jpg',
+    'images/screenshots/filesystem-relationships.jpg',
 }
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),

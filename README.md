@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="branding/linuxhound-logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="branding/linuxhound-logo.svg">
-    <img src="branding/linuxhound-logo.svg" width="792" alt="LinuxHound logo and red wordmark">
+    <source media="(prefers-color-scheme: dark)" srcset="images/linuxhound-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/linuxhound-logo.svg">
+    <img src="images/linuxhound-logo.svg" width="792" alt="LinuxHound logo and red wordmark">
   </picture>
 </p>
 
@@ -18,7 +18,7 @@ what changes after hardening.
 targets. Saved HTML reports open in a modern desktop browser. The demo
 can run elsewhere with Python; it does not audit that operating system.
 
-![LinuxHound environment graph showing demo accounts, services and files](branding/screenshots/environment-overview.jpg)
+![LinuxHound environment graph showing demo accounts, services and files](images/screenshots/environment-overview.jpg)
 
 The graph above comes from the LinuxHound demo. Red relationships mark modeled
 trust boundaries, while dashed relationships retain unresolved prerequisites.

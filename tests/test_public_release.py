@@ -48,12 +48,12 @@ class PublicReleaseTests(unittest.TestCase):
 
     def test_allowed_sources_and_private_paths(self):
         for name in ('linuxhound/collector.py', 'linuxhound/models/demo-path.safetensors',
-                     'linuxhound/models/demo-path.json', 'branding/screenshots/attack-path.jpg',
-                     'branding/screenshots/graph-neural-network.jpg'):
+                     'linuxhound/models/demo-path.json', 'images/screenshots/attack-path.jpg',
+                     'images/screenshots/graph-neural-network.jpg'):
             self.assertTrue(release.public_path(name), name)
         for name in ('artifacts/gnn/model.json', 'examples/lab-live/report.json',
                      'scripts/prompt.md', 'linuxhound/credentials.py', '.env',
-                     'docs/report.json', 'docs/GNN.md', 'artifacts/README.md', 'validation/results-controlled.json', 'examples/synthetic/before.html', 'linuxhound/models/private.safetensors', 'branding/screenshots/host.png'):
+                     'docs/report.json', 'docs/GNN.md', 'artifacts/README.md', 'validation/results-controlled.json', 'examples/synthetic/before.html', 'linuxhound/models/private.safetensors', 'images/screenshots/host.png'):
             self.assertFalse(release.public_path(name), name)
 
     def test_secret_indicators(self):
