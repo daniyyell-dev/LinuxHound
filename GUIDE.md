@@ -52,7 +52,7 @@ serves only the selected HTML on loopback; its private token URL grants access.
 Start by selecting an account. The graph highlights its incoming and outgoing
 relationships so you can follow how other resources connect to it.
 
-![Root account relationships in the fictional lab](branding/screenshots/root-relationships.jpg)
+![Root account relationships in the demo](branding/screenshots/root-relationships.jpg)
 
 Next, select a file to follow its ownership, group membership and job references.
 These relationships help explain who controls the file and which jobs may consume it.
@@ -60,7 +60,7 @@ These relationships help explain who controls the file and which jobs may consum
 ![Selected backup file and its relationships](branding/screenshots/file-relationships.jpg)
 
 The filesystem view below retains containment and symlink relationships from the
-fictional graph. It shows where resources sit and how a link points to another path.
+demo graph. It shows where resources sit and how a link points to another path.
 
 ![Filesystem containment and symlink relationships](branding/screenshots/filesystem-relationships.jpg)
 
@@ -128,7 +128,7 @@ also require `threat_model`, ordered `outcomes`, each graph's `reference_sha256`
 `limited_root_action`, `root_code_execution`. Root `id` is a limited action,
 not arbitrary code execution.
 
-The bundled Apache-2.0 model uses six fictional one-edge sudo scenarios: three
+The bundled Apache-2.0 model uses six one-edge sudo demo scenarios: three
 training and three validation fixtures from `scripts/build_demo_model.py`, seed 7,
 30 epochs. Scenario families overlap across splits. Only blocked/no-effect and
 limited-root-action classes have toy labels; read, write and root code execution
@@ -256,4 +256,4 @@ python scripts/check_public_release.py
 
 Core collection and rendering use the Python standard library. The optional GNN
 dependencies include PyTorch, SafeTensors and NumPy. README.md and GUIDE.md are the public documentation; screenshots use
-fictional data. Licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE).
+demo data. Licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE).

@@ -11,12 +11,12 @@ investigation UI, where you can examine the evidence behind each path and compar
 what changes after hardening.
 
 **Live collection:** Linux only. macOS, BSD and Windows are not collection
-targets. Saved HTML reports open in a modern desktop browser. The fictional demo
+targets. Saved HTML reports open in a modern desktop browser. The demo
 can run elsewhere with Python; it does not audit that operating system.
 
-![LinuxHound environment graph with synthetic accounts, services and files](branding/screenshots/environment-overview.jpg)
+![LinuxHound environment graph showing demo accounts, services and files](branding/screenshots/environment-overview.jpg)
 
-The graph above comes from a fictional Linux lab. Red relationships mark modeled
+The graph above comes from the LinuxHound demo. Red relationships mark modeled
 trust boundaries, while dashed relationships retain unresolved prerequisites.
 Following a connection helps explain access, but does not establish that an exploit works.
 
@@ -38,7 +38,7 @@ Each run saves `snapshot.json`,
 a localhost viewer. On a headless host, omit those flags and copy the HTML to a
 trusted desktop. The package is not yet published to PyPI.
 
-If you want to explore the interface first, open the fictional demo without
+If you want to explore the interface first, open the demo without
 collecting information from a host:
 
 ```sh
