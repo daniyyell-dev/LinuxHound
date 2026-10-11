@@ -6,13 +6,26 @@
   </picture>
 </p>
 
-# LinuxHound
+<p align="center">
+  <strong>Evidence-backed Linux permission graphs and attack-path investigation.</strong><br>
+  Trace how accounts reach privileged resources, inspect the supporting evidence and compare permission paths before and after hardening changes.
+</p>
 
-LinuxHound follows the permissions that connect Linux accounts to files, services
-and containers, helping you understand how access can lead to privileged resources.
-It collects metadata, builds a directed relationship graph and opens an offline
-investigation UI, where you can examine the evidence behind each path and compare
-what changes after hardening.
+<p align="center">
+  <a href="https://github.com/daniyyell-dev/LinuxHound/releases/latest"><img src="https://img.shields.io/github/v/release/daniyyell-dev/LinuxHound?style=flat&amp;label=release&amp;color=e76f2e" alt="Latest GitHub release"></a>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/python-3.9%2B-1685bd?style=flat" alt="Python 3.9 or newer"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-c62138?style=flat" alt="Apache-2.0 license"></a>
+  <a href="https://github.com/daniyyell-dev/LinuxHound/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/daniyyell-dev/LinuxHound/tests.yml?branch=main&amp;style=flat&amp;label=checks" alt="GitHub source checks"></a>
+</p>
+
+<p align="center">
+  <a href="GUIDE.md"><strong>Documentation</strong></a> &middot;
+  <a href="#quick-start-linux">Quick start</a> &middot;
+  <a href="GUIDE.md#docker">Docker</a> &middot;
+  <a href="GUIDE.md#graph-neural-network-gnn">GNN</a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/releases">Releases</a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/issues">Issues</a>
+</p>
 
 **Live collection:** Linux only. macOS, BSD and Windows are not collection
 targets. Saved HTML reports open in a modern desktop browser. The demo
@@ -79,15 +92,15 @@ that LinuxHound does not provide.
 | Before/after path comparison that accounts for missing coverage | ✅ | ❌ | ❌ | ❌ | ❌ |
 | General hardening and compliance audit | ❌ | ❌ | ❌ | ❌ | ✅ |
 
-## User guide
+## Documentation
 
-- [Tool comparison and feature notes](GUIDE.md#tool-comparison)
-- [Docker installation and running LinuxHound](GUIDE.md#docker)
-- [Investigating paths and comparing snapshots](GUIDE.md#what-the-results-show)
-- [Graph examples](GUIDE.md#graph-examples)
-- [Graph Neural Network (GNN) models and training](GUIDE.md#graph-neural-network-gnn)
-- [Collection scope, privacy and limitations](GUIDE.md#coverage-privacy-and-limitations)
-- [Development](GUIDE.md#development-and-license)
+Continue with the [user guide](GUIDE.md) for
+[investigating results](GUIDE.md#what-the-results-show),
+[graph examples](GUIDE.md#graph-examples) and
+[model training](GUIDE.md#graph-neural-network-gnn).
+It also covers [comparison details](GUIDE.md#tool-comparison),
+[collection scope and limitations](GUIDE.md#coverage-privacy-and-limitations),
+and [development](GUIDE.md#development-and-license).
 
 ## References and acknowledgements
 
