@@ -8,9 +8,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ROOT_FILES = {'.gitignore', 'MANIFEST.in', 'pyproject.toml', 'LICENSE', 'NOTICE',
-              'README.md', 'GUIDE.md', 'Dockerfile', '.dockerignore'}
+              'README.md', 'GUIDE.md', 'CONTRIBUTING.md', 'Dockerfile', '.dockerignore'}
 SOURCE_DIRS = {'linuxhound', 'tests', 'scripts', 'images'}
-EXTRA_FILES = {'.github/workflows/tests.yml', '.github/workflows/publish.yml'}
+PUBLIC_MARKDOWN = {'README.md', 'GUIDE.md', 'CONTRIBUTING.md', '.github/PULL_REQUEST_TEMPLATE.md'}
+EXTRA_FILES = {
+    '.github/workflows/tests.yml', '.github/workflows/publish.yml',
+    '.github/ISSUE_TEMPLATE/config.yml',
+    '.github/ISSUE_TEMPLATE/bug.yml',
+    '.github/ISSUE_TEMPLATE/feature.yml',
+    '.github/PULL_REQUEST_TEMPLATE.md',
+}
 MODEL_FILES = {'linuxhound/models/demo-path.safetensors', 'linuxhound/models/demo-path.json'}
 IMAGE_FILES = {
     'images/screenshots/attack-path.jpg',
@@ -31,7 +38,7 @@ SECRET_PATTERNS = [
 
 def public_path(name):
     path = Path(name)
-    if path.suffix.lower() == '.md' and name not in {'README.md', 'GUIDE.md'}:
+    if path.suffix.lower() == '.md' and name not in PUBLIC_MARKDOWN:
         return False
     if name in ROOT_FILES or name in EXTRA_FILES or name in MODEL_FILES or name in IMAGE_FILES:
         return True

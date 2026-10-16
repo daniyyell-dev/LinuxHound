@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: User guide
+    url: https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md
+    about: Read the user guide before opening a question the documentation already answers.
+  - name: Contributing
+    url: https://github.com/daniyyell-dev/LinuxHound/blob/main/CONTRIBUTING.md
+    about: Setup, checks, and what not to include in a report or pull request.
+  - name: Security advisory
+    url: https://github.com/daniyyell-dev/LinuxHound/security/advisories/new
+    about: Report a suspected vulnerability in LinuxHound without posting a live host report.

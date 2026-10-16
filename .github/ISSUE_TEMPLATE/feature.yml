@@ -1,0 +1,29 @@
+name: Feature
+description: Propose a change to collection, investigation, or documentation
+title: "Feature: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the investigation question this would answer.
+        Linux collection stays Linux-only. A path or score is not proof of a vulnerability.
+  - type: textarea
+    id: question
+    attributes:
+      label: What question should LinuxHound answer
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Why the current commands do not answer it
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: What should stay unchanged
+      description: Limits, evidence, or outputs this change must not weaken.
+    validations:
+      required: false

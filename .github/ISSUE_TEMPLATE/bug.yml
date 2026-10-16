@@ -1,0 +1,47 @@
+name: Bug
+description: Report a defect in collection, analysis, comparison, or the viewer
+title: "Bug: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the defect with a fictional example where you can.
+        Do not paste a live host snapshot, credentials, or an exploit recipe.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What command did you run, and what was the result?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: LinuxHound version
+      placeholder: "0.3.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where you ran it
+      options:
+        - Linux collection
+        - Demo on another operating system
+        - A saved report in the viewer
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Report contents
+      options:
+        - label: This report has no live host snapshot, credential, or secret file contents
+          required: true

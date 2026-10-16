@@ -25,6 +25,9 @@ class PublicReleaseTests(unittest.TestCase):
     def test_only_readme_and_user_guide_are_public_markdown(self):
         self.assertTrue(release.public_path('README.md'))
         self.assertTrue(release.public_path('GUIDE.md'))
+        self.assertTrue(release.public_path('CONTRIBUTING.md'))
+        self.assertTrue(release.public_path('.github/PULL_REQUEST_TEMPLATE.md'))
+        self.assertTrue(release.public_path('.github/ISSUE_TEMPLATE/bug.yml'))
         for name in ('MODEL_CARD.md', 'ARCHITECTURE.md', 'SECURITY.md',
                      'linuxhound/models/MODEL_CARD.md', 'scripts/notes.md',
                      'examples/synthetic/README.md', 'linuxhound/README.MD', 'docs/GUIDE.md', 'linuxhound/GUIDE.md'):

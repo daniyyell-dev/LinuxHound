@@ -24,7 +24,8 @@
   <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#docker">Docker</a> &middot;
   <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#graph-neural-network-gnn">GNN</a> &middot;
   <a href="https://github.com/daniyyell-dev/LinuxHound/releases">Releases</a> &middot;
-  <a href="https://github.com/daniyyell-dev/LinuxHound/issues">Issues</a>
+  <a href="https://github.com/daniyyell-dev/LinuxHound/issues">Issues</a> &middot;
+  <a href="https://github.com/daniyyell-dev/LinuxHound/blob/main/CONTRIBUTING.md">Contributing</a>
 </p>
 
 **Live collection:** Linux only. macOS, BSD and Windows are not collection
@@ -140,6 +141,13 @@ Continue with the [user guide](https://github.com/daniyyell-dev/LinuxHound/blob/
 It also covers [comparison details](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#tool-comparison),
 [collection scope and limitations](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#coverage-privacy-and-limitations),
 and [development](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md#development-and-license).
+
+## Contributing
+
+Bug reports, documentation fixes, tests and collection improvements are welcome.
+Read [CONTRIBUTING.md](https://github.com/daniyyell-dev/LinuxHound/blob/main/CONTRIBUTING.md)
+before opening an issue or a pull request. Do not include a live host report,
+credentials, or an exploit recipe.
 
 ## References and acknowledgements
 

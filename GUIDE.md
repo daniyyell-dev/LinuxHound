@@ -355,5 +355,7 @@ python scripts/check_public_release.py
 ```
 
 Core collection and rendering use the Python standard library. The optional GNN
-dependencies include PyTorch, SafeTensors and NumPy. README.md and GUIDE.md are the public documentation; screenshots use
+dependencies include PyTorch, SafeTensors and NumPy. README.md, GUIDE.md and
+CONTRIBUTING.md are the public documentation; screenshots use
 demo data. Licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE).
+See [CONTRIBUTING.md](CONTRIBUTING.md) before sending a change.
