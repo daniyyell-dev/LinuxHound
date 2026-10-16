@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="graph" role="img" aria-label="Linux permissions and conditional attack paths" data-motion-state="idle" data-motion-count="0" viewBox="7.263482051485624 79.51741320427018 757.4466656080069 739.8000587031605" class="motion-disabled" width="757.4466656080069" height="739.8000587031605"><rect x="7.263482051485624" y="79.51741320427018" width="757.4466656080069" height="739.8000587031605" fill="#0b0c0e"/><style>:root {
+  color-scheme: dark;
+  --canvas: #0b0c0e;
+  --panel: #17181b;
+  --ink: #f5f5f5;
+  --muted: #a9adb4;
+  --line: #303238;
+  --blue: #f4f4f5;
+  --red: #ff444d;
+  --amber: #e7be73;
+  --service: #7faeb8;
+  --green: #83cbb1;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font: 13px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+button, input, select { font: inherit; }
+button { cursor: pointer; color: var(--ink); background: #222428; border: 1px solid #3a3d43; border-radius: 6px; padding: 8px 12px; transition: background 140ms, border-color 140ms; }
+button:hover { background: #2e3035; border-color: #737780; }
+button:active { background: #3b3e44; }
+button:focus-visible, input:focus-visible, select:focus-visible, .graph-node:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+input, select { width: 100%; min-height: 38px; padding: 8px 10px; color: var(--ink); background: #0e0f12; border: 1px solid #40434a; border-radius: 6px; }
+input::placeholder { color: #888f9d; }
+input[type=checkbox] { min-height: auto; width: auto; accent-color: var(--blue); }
+h1, h2, h3, p { margin: 0; }
+h2 { font-size: 17px; font-weight: 600; letter-spacing: -.35px; margin: 18px 0 8px; }
+h3 { font-size: 12px; font-weight: 600; margin: 22px 0 9px; }
+p { overflow-wrap: anywhere; }
+label { display: block; margin: 17px 0 6px; color: #c2c8d3; font-size: 12px; }
+[hidden] { display: none !important; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #434a58; border-radius: 4px; }
+.topbar { height: 58px; display: flex; align-items: center; gap: 20px; padding: 0 22px; background: #141518; border-bottom: 1px solid var(--line); box-shadow: inset 3px 0 #ed1827; }
+.brand { font-size: 19px; font-weight: 700; letter-spacing: -.7px; display: flex; align-items: center; }
+.brand-mark { width: 34px; height: 34px; margin-right: 10px; flex-shrink: 0; }
+.brand em { font-style: normal; color: #ff2636; }
+.topbar &gt; .muted { border-left: 1px solid #464c59; padding-left: 20px; color: #a9b2c2; }
+.topbar .tag { order: 4; margin-left: 0; color: #bac5d8; font-size: 9px; letter-spacing: .6px; }
+.topbar .host { margin-left: auto; color: #a7b0c1; font: 11px ui-monospace, monospace; }
+.workspace { display: grid; grid-template-columns: 74px 278px minmax(340px,1fr) 334px; height: calc(100vh - 58px); }
+.tabs { display: flex; flex-direction: column; gap: 7px; padding: 15px 6px; border-right: 1px solid var(--line); background: #101114; }
+.tabs button { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 7px; padding: 11px 2px; border: 1px solid transparent; border-radius: 7px; font-size: 9px; background: transparent; color: #9ca6b9; min-height: 64px; }
+.tabs button svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+.tabs button:hover { background: #242529; color: #ffffff; }
+.tabs .active { background: #32161b; color: #ffffff; border-color: #922431; }
+.sidebar, .inspector { background: var(--panel); overflow: auto; min-height: 0; }
+.sidebar { border-right: 1px solid var(--line); }
+.inspector { border-left: 1px solid var(--line); }
+.panel { padding: 22px 18px; }
+.panel &gt; h2 { margin-top: 0; font-size: 19px; }
+.panel &gt; .muted { line-height: 1.65; }
+.pane[hidden] { display: none; }
+.muted { color: var(--muted); font-size: 11px; }
+.tag { display: inline-flex; align-items: center; padding: 3px 0; color: #bac5d8; background: none; border: 0; border-radius: 0; font: 600 9px/1.5 ui-monospace, monospace; letter-spacing: .8px; text-transform: uppercase; }
+.tag.high { color: #ff8086; }
+.tag.medium { color: #eac17a; }
+.tag.risk, .tag.verified { color: #ff505a; }
+.tag.unknown { color: #a9adb4; }
+.tag.info { color: #b9cff5; }
+.tag.disconnected { color: #c7bfdc; }
+.stat-row { display: flex; gap: 0; padding: 0 0 20px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.stat { flex: 1; border-right: 1px solid var(--line); padding-left: 13px; }
+.stat:first-child { padding-left: 0; }
+.stat:last-child { border: 0; }
+.stat b { display: block; font-size: 25px; font-weight: 500; letter-spacing: -1px; }
+.stat small { font-size: 8px; color: #99a4b7; letter-spacing: .7px; }
+.stat:nth-child(3) b { color: #ff505a; }
+.actions { display: flex; gap: 7px; flex-wrap: wrap; margin: 14px 0; }
+.primary { color: #ffffff; background: #bf1524; border-color: #bf1524; font-weight: 600; }
+.primary:hover { background: #d51c2c; border-color: #d51c2c; }
+.check { display: flex; align-items: center; gap: 8px; }
+.hint { margin: 18px 0; padding: 0 0 0 10px; border-left: 2px solid #57657b; color: #acb5c4; font-size: 10px; line-height: 1.8; }
+.list { display: grid; gap: 0; margin-top: 12px; }
+.card { width: 100%; text-align: left; padding: 13px 10px; background: transparent; border: 0; border-bottom: 1px solid #303641; border-radius: 0; }
+.card:hover { background: #25272b; }
+.card.selected { background: #302024; box-shadow: inset 2px 0 #ff2636; }
+.card strong { display: block; font-size: 12px; font-weight: 550; margin: 5px 0; overflow-wrap: anywhere; }
+.card .meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.card .muted { font-size: 10px; }
+#nodes .card { border-radius: 5px; border-bottom-color: transparent; padding: 9px 8px; }
+#nodes .card &gt; div:first-child { display: flex; align-items: center; gap: 10px; }
+#nodes .card &gt; .muted { padding-left: 32px; }
+#nodes .card strong { margin: 0; }
+.resource-icon { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; flex-shrink: 0; }
+.resource-icon svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.graph-area { display: flex; flex-direction: column; min-height: 0; min-width: 0; position: relative; background: var(--canvas); }
+.graph-header { display: flex; justify-content: space-between; gap: 15px; align-items: center; padding: 19px 22px; min-height: 84px; background: #17181b; border-bottom: 1px solid var(--line); }
+.graph-header h1 { font-size: 19px; font-weight: 550; letter-spacing: -.6px; }
+.graph-header p { font-size: 10px; color: #9da7b8; margin-top: 5px; }
+.toolbar { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.toolbar button { font-size: 10px; padding: 6px 9px; background: transparent; border-color: #3c4451; }
+.toolbar button:hover { background: #303238; }
+.toolbar button[aria-pressed=true] { border-color: #81858e; background: #27292e; color: #ffffff; }
+#zoom-in, #zoom-out, #fit { position: absolute; z-index: 3; right: 18px; width: 36px; height: 35px; padding: 0; background: #242a34; border: 1px solid #424b5b; font-size: 19px; }
+#zoom-in { bottom: 179px; border-radius: 7px 7px 0 0; }
+#zoom-out { bottom: 145px; border-radius: 0; }
+#fit { bottom: 111px; border-radius: 0 0 7px 7px; font-size: 0; }
+#fit:after { content: '⊡'; font-size: 22px; }
+.canvas { flex: 1; min-height: 350px; position: relative; overflow: hidden; touch-action: none; background: var(--canvas); background-image: radial-gradient(#6a6e7640 .65px,transparent .65px); background-size: 28px 28px; }
+.canvas svg { width: 100%; height: 100%; display: block; }
+.canvas .empty { position: absolute; top: 45%; width: 100%; text-align: center; pointer-events: none; color: var(--muted); }
+.graph-node { cursor: pointer; }
+.graph-node .shape { fill: #1a1d22; stroke: var(--node-color,#90a4be); stroke-width: 2; stroke-opacity: 1; transition: stroke-width 140ms, fill 140ms; }
+.graph-node:hover .shape { fill: #30353c; stroke-width: 3; }
+.graph-node.selected .shape { stroke: #ffffff; stroke-width: 3; }
+.graph-node .icon { fill: none; stroke: var(--node-color,#e4eaf6); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.graph-node .risk-ring { fill: none; stroke: var(--red); stroke-width: 2; }
+.graph-node .target-ring { fill: none; stroke: #fafafa; stroke-width: 2; }
+.graph-node .isolated-ring { fill: none; stroke: #a69ab9; stroke-dasharray: 3 4; stroke-width: 1.5; }
+.graph-node.connected .shape { stroke: #ffffff; }
+.graph-node.dimmed { opacity: .3; }
+.graph-node .node-label { font: 12px -apple-system, sans-serif; fill: #e5ebf5; paint-order: stroke; stroke: var(--canvas); stroke-width: 5; stroke-linejoin: round; pointer-events: none; }
+.graph-node .node-kind { font: 9px -apple-system, sans-serif; fill: #9ba8bd; pointer-events: none; }
+.edge { fill: none; stroke: #8d9bb0; stroke-width: 1.3; opacity: .5; }
+.edge.conditional { stroke: #8d9bb0; stroke-dasharray: 5 4; opacity: .8; }
+.edge.attack { stroke: var(--red); stroke-width: 2.3; opacity: .9; }
+.edge.highlight { stroke: #d7e3e8; stroke-width: 3; opacity: 1; }
+.edge.relationship, .edge.incident { stroke: #d7e3e8; stroke-width: 2.5; opacity: 1; }
+.edge.attack.highlight, .edge.attack.relationship, .edge.attack.incident { stroke: #ff2636; }
+.edge-label.attack.relationship { fill: #ffc2d0; }
+.edge.dimmed { opacity: .13; }
+.edge-hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; }
+.edge-label { font: 10px -apple-system, sans-serif; fill: #afbbcf; paint-order: stroke; stroke: var(--canvas); stroke-width: 5; pointer-events: none; }
+.edge-label.attack { fill: #ffc2d0; }
+.edge-label.relationship { fill: #e4ecef; }
+.legend { padding: 10px 16px; display: flex; gap: 13px; flex-wrap: wrap; border-top: 1px solid var(--line); background: #151619; color: #a4afc2; font-size: 9px; }
+.legend span { display: flex; align-items: center; gap: 5px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; background: #79adff; }
+.legend .service { background: var(--service); }
+.legend .gray { background: #a4b3ca; }
+.legend .orange { background: #ff9a61; }
+.legend .cyan { background: #d7e3e8; }
+.legend .red { background: var(--red); }
+.graph-status { padding: 8px 16px; background: #101114; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; color: #9aa5b8; font-size: 9px; }
+.graph-status &gt; span:last-child { display: none; }
+.inspector-title { position: sticky; top: 0; z-index: 2; padding: 19px 20px; background: #202125; border-bottom: 1px solid var(--line); color: #b7c1d2; font-size: 11px; font-weight: 600; }
+.detail { padding: 24px 20px; }
+.entity-heading { display: flex; align-items: flex-start; gap: 13px; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 19px; }
+.entity-symbol { width: 40px; height: 40px; border: 1px solid #636871; background: #292b30; color: #ffffff; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.entity-symbol svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.entity-heading h2 { margin: -3px 0 6px; font-size: 21px; letter-spacing: -.65px; overflow-wrap: anywhere; line-height: 1.4; }
+.detail .callout { margin: 17px 0; padding: 10px 12px; border-radius: 5px; background: #332d23; border-left: 2px solid var(--amber); color: #d9cdb3; font-size: 11px; line-height: 1.7; }
+.detail .danger { background: #33262e; border-left-color: var(--red); color: #e9c3cd; }
+.detail .kv { margin: 7px 0; font-size: 10px; color: #a5b0c1; overflow-wrap: anywhere; }
+.detail details { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 15px; }
+.detail summary { cursor: pointer; font-size: 12px; font-weight: 550; color: #c8d2e4; }
+.detail h3 { font-size: 12px; margin: 24px 0 11px; color: #d7dfec; }
+.property { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #2d333e; font-size: 11px; }
+.property span:first-child { color: #9da9bf; }
+.property span:last-child { text-align: right; max-width: 62%; overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 10px; }
+.detail .actions { display: grid; grid-template-columns: 1fr 1fr; }
+.detail .actions button { padding: 7px; font-size: 10px; }
+.relation { width: 100%; text-align: left; font-size: 11px; margin-top: 8px; }
+.step { display: flex; align-items: flex-start; gap: 11px; padding: 11px 0; }
+.step-number { width: 23px; height: 23px; text-align: center; line-height: 21px; border: 1px solid #5e6374; border-radius: 50%; color: #becae2; font-size: 10px; flex-shrink: 0; }
+.step b { font-size: 12px; font-weight: 550; }
+.step p { font-size: 10px; color: #9daabe; margin-top: 3px; }
+.coverage { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 13px; }
+.coverage span { border: 1px solid #3b4654; border-radius: 4px; padding: 3px 5px; font-size: 9px; color: #afc3b9; }
+.coverage .gap { border-color: #635333; color: #e3c896; }
+.divider { border-top: 1px solid var(--line); margin: 20px 0; }
+.steps-bar { display: none; padding: 11px 20px; background: #30262e; color: #edbfcb; font-size: 10px; border-bottom: 1px solid #51404a; }
+.steps-bar.visible { display: block; }
+.steps-bar.relationship { background: #242b30; color: #e4ecef; border-color: #5b737c; }
+pre { white-space: pre-wrap; font-size: 10px; color: #bbc8dd; }
+.instructions { color: #a9b4c8; font-size: 12px; line-height: 1.9; }
+#changes .card { cursor: default; }
+.aggregate .shape { fill: #1e2024; stroke-width: 2; }
+.aggregate .aggregate-count { font: 600 19px -apple-system, sans-serif; fill: #f0f3fa; pointer-events: none; }
+.summary-edge { stroke-width: 1.8; opacity: .9; }
+.summary-edge-label { font: 550 11px -apple-system, sans-serif; fill: #cad5e6; paint-order: stroke; stroke: var(--canvas); stroke-width: 5; pointer-events: none; }
+.target-summary-node .shape { fill: #30151b; stroke: #ff3544; stroke-width: 2; }
+.target-summary-node .icon { stroke: #ffffff; }
+.target-caption { font: 600 22px -apple-system, sans-serif; fill: #edf2fb; }
+.target-metric { font: 11px -apple-system, sans-serif; fill: #9fadc2; }
+.summary-table { width: 100%; border-collapse: collapse; margin: 13px 0; font-size: 11px; }
+.summary-table th { text-align: left; font-size: 10px; color: #a4b1c5; font-weight: 500; padding: 8px 5px; border-bottom: 1px solid #414959; }
+.summary-table td { padding: 12px 5px; border-bottom: 1px solid #303744; vertical-align: top; }
+.finding-context { margin-top: 5px; color: #9daabe; font-size: 10px; }
+.summary-table button { font-size: 10px; padding: 5px 7px; }
+.target-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 0 21px; border-bottom: 1px solid var(--line); }
+.target-stats b { display: block; font-size: 26px; font-weight: 500; line-height: 1.4; letter-spacing: -.7px; }
+.target-stats span { font-size: 10px; color: #9da9bf; }
+#summary-groups .card { display: grid; grid-template-columns: 1fr auto; column-gap: 10px; padding: 15px 7px; }
+#summary-groups .card &gt; .tag { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+#summary-groups .card &gt; strong { grid-column: 1; grid-row: 1; margin: 0 0 3px; }
+#summary-groups .card &gt; .muted { grid-column: 1; grid-row: 2; }
+.flow-particle { pointer-events: none; opacity: .8; }
+.orbit { display: none; }
+@keyframes reveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.pane:not([hidden]), .detail.revealing { animation: reveal 160ms ease-out; }
+.motion-disabled *, .motion-disabled *:before { animation: none !important; transition: none !important; }
+.motion-disabled .flow-particle { display: none; }
+@media(prefers-reduced-motion:reduce) { *, *:before { animation: none !important; transition: none !important; } .flow-particle { display: none; } }
+@media(max-width:1280px) { .workspace { grid-template-columns: 68px 246px minmax(320px,1fr) 290px; } .graph-header { flex-direction: column; align-items: flex-start; padding: 16px 18px; } .toolbar { justify-content: flex-start; } .detail { padding: 20px 16px; } .topbar &gt; .muted { display: none; } }
+@media(max-width:1000px) { .workspace { height: auto; grid-template-columns: 66px 240px minmax(320px,1fr); } .tabs { grid-row: 1 / 3; } .graph-area { height: 800px; } .sidebar { max-height: 800px; } .inspector { grid-column: 2 / 4; max-height: 550px; border-top: 1px solid var(--line); } .topbar .host { max-width: 330px; overflow: hidden; } }
+@media(max-width:650px) { .workspace { display: flex; flex-direction: column; } .tabs { flex-direction: row; padding: 5px 8px; border-bottom: 1px solid var(--line); } .tabs button { flex: 1; min-height: 58px; padding: 7px; } .sidebar { max-height: 390px; border-bottom: 1px solid var(--line); } .graph-area { height: 620px; } .inspector { max-height: none; } .topbar { padding: 0 14px; gap: 10px; } .topbar .host { display: none; } .topbar .tag { margin-left: auto; } .graph-header h1 { font-size: 18px; } #zoom-in { bottom: 209px; } #zoom-out { bottom: 175px; } #fit { bottom: 141px; } }
+</style><defs><marker id="arrow-base" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#647d9f"/></marker><marker id="arrow-attack" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ff444d"/></marker><marker id="arrow-conditional" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8d9bb0"/></marker><marker id="arrow-relationship" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d7e3e8"/></marker></defs><path d="M 490.86144591957003 416.5204235645144 Q 342.0431995255653 413.5395819265529 201.83628340422075 445.86943259184665" class="edge attack" data-edge-id="edge/63ce88e9ad061a528a0f03e8" marker-end="url(#arrow-attack)"><title>MemberOf · observed_permission · Membership enters Docker administration; live socket access and daemon authority remain prerequisites.</title></path><path d="M 490.86144591957003 416.5204235645144 Q 342.0431995255653 413.5395819265529 201.83628340422075 445.86943259184665" class="edge-hit" data-edge-hit-id="edge/63ce88e9ad061a528a0f03e8" tabindex="0" role="button" aria-label="Relationship MemberOf from app to docker"/><path d="M 306.50107632493314 430.944060168703 Q 285.4966195553551 293.44330830901924 231.2960138000953 170.74173522791708" class="edge attack" data-edge-id="edge/6d4b26a9e4150ef58ec942bc" marker-end="url(#arrow-attack)"><title>HasCapability · observed_permission · Executable carries elevated kernel authority; executable behavior remains a prerequisite.</title></path><path d="M 306.50107632493314 430.944060168703 Q 285.4966195553551 293.44330830901924 231.2960138000953 170.74173522791708" class="edge-hit" data-edge-hit-id="edge/6d4b26a9e4150ef58ec942bc" tabindex="0" role="button" aria-label="Relationship HasCapability from /opt/lab/helper to cap_setuid"/><path d="M 304.3033046309364 328.28011537054203 Q 394.42030222764043 302.3464488382714 463.6755765367419 246.65058310178375" class="edge" data-edge-id="edge/e9533e29e265f0c5974bd2d2" marker-end="url(#arrow-base)"><title>CanReplace · observed_permission · Supporting step in a modeled risk chain; an authority transition is not established on this edge.</title></path><path d="M 304.3033046309364 328.28011537054203 Q 394.42030222764043 302.3464488382714 463.6755765367419 246.65058310178375" class="edge-hit" data-edge-hit-id="edge/e9533e29e265f0c5974bd2d2" tabindex="0" role="button" aria-label="Relationship CanReplace from dev to /opt/lab/backup.py"/><path d="M 287.79241318358106 366.5202929753243 Q 279.8473189508617 403.7490979828437 305.0849773938337 426.148711344697" class="edge" data-edge-id="edge/bf915b48cb553618affba64a" marker-end="url(#arrow-base)"><title>CanExecute · observed_permission · Supporting step in a modeled risk chain; an authority transition is not established on this edge.</title></path><path d="M 287.79241318358106 366.5202929753243 Q 279.8473189508617 403.7490979828437 305.0849773938337 426.148711344697" class="edge-hit" data-edge-hit-id="edge/bf915b48cb553618affba64a" tabindex="0" role="button" aria-label="Relationship CanExecute from dev to /opt/lab/helper"/><path d="M 379.6284880304727 182.92403002064717 Q 416.3175343022191 218.5866190443839 462.83108077857423 219.2566489200726" class="edge" data-edge-id="edge/aeaa312b3b2c650aa4a537b4" marker-end="url(#arrow-base)"><title>CanWrite · observed_permission · Supporting step in a modeled risk chain; an authority transition is not established on this edge.</title></path><path d="M 379.6284880304727 182.92403002064717 Q 416.3175343022191 218.5866190443839 462.83108077857423 219.2566489200726" class="edge-hit" data-edge-hit-id="edge/aeaa312b3b2c650aa4a537b4" tabindex="0" role="button" aria-label="Relationship CanWrite from backup to /opt/lab/backup.py"/><path d="M 351.0474070019248 198.84494450016567 Q 316.6240597756162 311.94247513482776 318.5458915096721 425.2072371632985" class="edge" data-edge-id="edge/05533c824d94c3592be0c072" marker-end="url(#arrow-base)"><title>CanExecute · observed_permission · Supporting step in a modeled risk chain; an authority transition is not established on this edge.</title></path><path d="M 351.0474070019248 198.84494450016567 Q 316.6240597756162 311.94247513482776 318.5458915096721 425.2072371632985" class="edge-hit" data-edge-hit-id="edge/05533c824d94c3592be0c072" tabindex="0" role="button" aria-label="Relationship CanExecute from backup to /opt/lab/helper"/><path d="M 491.3077079711263 419.37986545335286 Q 412.1358615889302 417.72716841385136 345.3052935438537 450.2606213331525" class="edge" data-edge-id="edge/fc717396ff97c1583a1479ad" marker-end="url(#arrow-base)"><title>CanExecute · observed_permission · Supporting step in a modeled risk chain; an authority transition is not established on this edge.</title></path><path d="M 491.3077079711263 419.37986545335286 Q 412.1358615889302 417.72716841385136 345.3052935438537 450.2606213331525" class="edge-hit" data-edge-hit-id="edge/fc717396ff97c1583a1479ad" tabindex="0" role="button" aria-label="Relationship CanExecute from app to /opt/lab/helper"/><path d="M 306.91507559131924 336.21231785086275 Q 353.2320263956369 346.8454223997062 388.7798625971531 322.7650400785775" class="edge conditional attack" data-edge-id="edge/bb39cb10c1649c2e4d19632e" marker-end="url(#arrow-attack)"><title>SudoAllows · conditional · Sudo policy permits execution as root; command and authentication prerequisites still apply.</title></path><path d="M 306.91507559131924 336.21231785086275 Q 353.2320263956369 346.8454223997062 388.7798625971531 322.7650400785775" class="edge-hit" data-edge-hit-id="edge/bb39cb10c1649c2e4d19632e" tabindex="0" role="button" aria-label="Relationship SudoAllows from dev to root"/><path d="M 365.9667661210382 196.7399366990703 Q 371.2067890048139 252.2365973592738 407.22246949950977 288.39782684726356" class="edge attack" data-edge-id="edge/f704ff6e351ded19563e1081" marker-end="url(#arrow-attack)"><title>SudoAllows · observed_permission · Sudo policy permits execution as root; command and authentication prerequisites still apply.</title></path><path d="M 365.9667661210382 196.7399366990703 Q 371.2067890048139 252.2365973592738 407.22246949950977 288.39782684726356" class="edge-hit" data-edge-hit-id="edge/f704ff6e351ded19563e1081" tabindex="0" role="button" aria-label="Relationship SudoAllows from backup to root"/><path d="M 455.6724637498569 475.9300215444383 Q 458.5215583122495 406.01226845652707 427.3222374727156 348.81085952162806" class="edge attack" data-edge-id="edge/cd13c212bf1d6c385288d5b1" marker-end="url(#arrow-attack)"><title>RunsAs · observed_permission · The modeled chain reaches execution in the root identity.</title></path><path d="M 455.6724637498569 475.9300215444383 Q 458.5215583122495 406.01226845652707 427.3222374727156 348.81085952162806" class="edge-hit" data-edge-hit-id="edge/cd13c212bf1d6c385288d5b1" tabindex="0" role="button" aria-label="Relationship RunsAs from backup.service to root"/><path d="M 489.1181663850542 258.8910272654413 Q 458.9676762826997 365.1467200056043 465.1511930638041 470.4859282708568" class="edge conditional attack" data-edge-id="edge/b3d57cc255550aa98d5dc1b3" marker-end="url(#arrow-attack)"><title>MayInfluence · conditional · Potential influence over a root-run consumer; code execution and job activation are prerequisites.</title></path><path d="M 489.1181663850542 258.8910272654413 Q 458.9676762826997 365.1467200056043 465.1511930638041 470.4859282708568" class="edge-hit" data-edge-hit-id="edge/b3d57cc255550aa98d5dc1b3" tabindex="0" role="button" aria-label="Relationship MayInfluence from /opt/lab/backup.py to backup.service"/><path d="M 227.8591846949002 263.6684883563682 Q 306.25390251565625 304.3157828046898 389.54227727328134 308.9484674149994" class="edge attack" data-edge-id="edge/0b10bcacad96a5820840e5b8" marker-end="url(#arrow-attack)"><title>RunsAs · observed_permission · The modeled chain reaches execution in the root identity.</title></path><path d="M 227.8591846949002 263.6684883563682 Q 306.25390251565625 304.3157828046898 389.54227727328134 308.9484674149994" class="edge-hit" data-edge-hit-id="edge/0b10bcacad96a5820840e5b8" tabindex="0" role="button" aria-label="Relationship RunsAs from /etc/crontab:10 to root"/><path d="M 465.25126499604187 234.31706219482058 Q 345.5052594264988 226.2877391489104 233.7477705331079 253.7152010857766" class="edge conditional attack" data-edge-id="edge/abdeb2aa5578fc1c8efdb75d" marker-end="url(#arrow-attack)"><title>MayInfluence · conditional · Potential influence over a root-run consumer; code execution and job activation are prerequisites.</title></path><path d="M 465.25126499604187 234.31706219482058 Q 345.5052594264988 226.2877391489104 233.7477705331079 253.7152010857766" class="edge-hit" data-edge-hit-id="edge/abdeb2aa5578fc1c8efdb75d" tabindex="0" role="button" aria-label="Relationship MayInfluence from /opt/lab/backup.py to /etc/crontab:10"/><text x="342.0431995255653" y="406.5395819265529" class="edge-label attack" text-anchor="middle">MemberOf</text><text x="285.4966195553551" y="286.44330830901924" class="edge-label attack" text-anchor="middle">HasCapability</text><text x="394.42030222764043" y="295.3464488382714" class="edge-label" text-anchor="middle">CanReplace</text><text x="279.8473189508617" y="396.7490979828437" class="edge-label" text-anchor="middle">CanExecute</text><text x="416.3175343022191" y="211.5866190443839" class="edge-label" text-anchor="middle">CanWrite</text><text x="316.6240597756162" y="304.94247513482776" class="edge-label" text-anchor="middle">CanExecute</text><text x="412.1358615889302" y="410.72716841385136" class="edge-label" text-anchor="middle">CanExecute</text><text x="353.2320263956369" y="339.8454223997062" class="edge-label attack" text-anchor="middle">SudoAllows</text><text x="371.2067890048139" y="245.2365973592738" class="edge-label attack" text-anchor="middle">SudoAllows</text><text x="458.5215583122495" y="399.01226845652707" class="edge-label attack" text-anchor="middle">RunsAs</text><text x="458.9676762826997" y="358.1467200056043" class="edge-label attack" text-anchor="middle">MayInfluence</text><text x="306.25390251565625" y="297.3157828046898" class="edge-label attack" text-anchor="middle">RunsAs</text><text x="345.5052594264988" y="219.2877391489104" class="edge-label attack" text-anchor="middle">MayInfluence</text><g class="graph-node" transform="translate(420.35669470211616,317.5781648906656)" data-node-id="account/lab-01/0" style="--node-color:#79adff;--entry-delay:0ms" tabindex="0" role="button" aria-label="account: root"><title>root · account</title><circle r="31" class="risk-ring"/><circle r="35" class="target-ring"/><circle r="26" fill="#79adff" class="shape"/><path d="M -5 -5 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M -10 11 v-3 q0 -5 10 -5 q10 0 10 5 v3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">root</text><text x="0" y="64" text-anchor="middle" class="node-kind">account</text></g><g class="graph-node" transform="translate(170,449.10224236140283)" data-node-id="group/lab-01/130" style="--node-color:#67d4cc;--entry-delay:12ms" tabindex="0" role="button" aria-label="group: docker"><title>docker · group</title><circle r="31" class="risk-ring"/><circle r="26" fill="#67d4cc" class="shape"/><path d="M -4 -4 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 M -8 10 q0 -8 8 -8 q8 0 8 8 M -12 -4 a3 3 0 0 0 -4 4 M 12 -4 a3 3 0 0 1 4 4" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">docker</text><text x="0" y="64" text-anchor="middle" class="node-kind">group</text></g><g class="graph-node" transform="translate(280.2721235027567,340.58874379066344)" data-node-id="account/lab-01/2002" style="--node-color:#79adff;--entry-delay:24ms" tabindex="0" role="button" aria-label="account: dev"><title>dev · account</title><circle r="31" class="risk-ring"/><circle r="26" fill="#79adff" class="shape"/><path d="M -5 -5 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M -10 11 v-3 q0 -5 10 -5 q10 0 10 5 v3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">dev</text><text x="0" y="64" text-anchor="middle" class="node-kind">account</text></g><g class="graph-node" transform="translate(354.88476360633905,172.1190264749498)" data-node-id="account/lab-01/2001" style="--node-color:#79adff;--entry-delay:36ms" tabindex="0" role="button" aria-label="account: backup"><title>backup · account</title><circle r="31" class="risk-ring"/><circle r="26" fill="#79adff" class="shape"/><path d="M -5 -5 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M -10 11 v-3 q0 -5 10 -5 q10 0 10 5 v3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">backup</text><text x="0" y="64" text-anchor="middle" class="node-kind">account</text></g><g class="graph-node" transform="translate(517.7233100418813,413.79274032145133)" data-node-id="account/lab-01/2003" style="--node-color:#79adff;--entry-delay:48ms" tabindex="0" role="button" aria-label="account: app"><title>app · account</title><circle r="31" class="risk-ring"/><circle r="26" fill="#79adff" class="shape"/><path d="M -5 -5 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M -10 11 v-3 q0 -5 10 -5 q10 0 10 5 v3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">app</text><text x="0" y="64" text-anchor="middle" class="node-kind">account</text></g><g class="graph-node" transform="translate(492.15697639236225,232.0625790483065)" data-node-id="file/lab-01//opt/lab/backup.py" style="--node-color:#bac9e0;--entry-delay:60ms" tabindex="0" role="button" aria-label="file: /opt/lab/backup.py"><title>/opt/lab/backup.py · file</title><circle r="31" class="risk-ring"/><circle r="26" fill="#bac9e0" class="shape"/><path d="M -8 -11 h10 l6 6 v16 h-16 z M 2 -11 v6 h6 M -4 0 h8 M -4 5 h8" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">/opt/lab/backup.py</text><text x="0" y="64" text-anchor="middle" class="node-kind">file</text></g><g class="graph-node" transform="translate(313.9979133118478,456.88239926725805)" data-node-id="file/lab-01//opt/lab/helper" style="--node-color:#98b4e1;--entry-delay:72ms" tabindex="0" role="button" aria-label="binary: /opt/lab/helper"><title>/opt/lab/helper · binary</title><circle r="31" class="risk-ring"/><circle r="26" fill="#98b4e1" class="shape"/><path d="M -9 -8 h18 v16 h-18 z M -5 -3 l4 3 l-4 3 M 2 4 h4" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">/opt/lab/helper</text><text x="0" y="64" text-anchor="middle" class="node-kind">binary</text></g><g class="graph-node" transform="translate(222.4108736674557,140)" data-node-id="capability/lab-01/cap_setuid" style="--node-color:#f6cb71;--entry-delay:84ms" tabindex="0" role="button" aria-label="capability: cap_setuid"><title>cap_setuid · capability</title><circle r="31" class="risk-ring"/><circle r="26" fill="#f6cb71" class="shape"/><path d="M -8 -4 a5 5 0 1 0 0 10 a5 5 0 1 0 0 -10 M -3 1 h15 M 7 1 v4 M 11 1 v3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">cap_setuid</text><text x="0" y="64" text-anchor="middle" class="node-kind">capability</text></g><g class="graph-node" transform="translate(461.54964046255014,502.28260763931286)" data-node-id="service/lab-01/backup.service" style="--node-color:#7faeb8;--entry-delay:96ms" tabindex="0" role="button" aria-label="service: backup.service"><title>backup.service · service</title><circle r="31" class="risk-ring"/><circle r="26" fill="#7faeb8" class="shape"/><path d="M -9 -9 h18 v6 h-18 z M -9 3 h18 v6 h-18 z M -5 -6 h1 M -5 6 h1" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">backup.service</text><text x="0" y="64" text-anchor="middle" class="node-kind">service · active</text></g><g class="graph-node" transform="translate(201.8595199893208,256.3871811112748)" data-node-id="job/lab-01//etc/crontab:10" style="--node-color:#7faeb8;--entry-delay:108ms" tabindex="0" role="button" aria-label="job: /etc/crontab:10"><title>/etc/crontab:10 · job</title><circle r="31" class="risk-ring"/><circle r="26" fill="#7faeb8" class="shape"/><path d="M 0 -11 a11 11 0 1 0 0 22 a11 11 0 1 0 0 -22 M 0 -6 v7 l5 3" class="icon"/><text x="0" y="49" text-anchor="middle" class="node-label">/etc/crontab:10</text><text x="0" y="64" text-anchor="middle" class="node-kind">job</text></g></svg>

@@ -18,7 +18,6 @@ prioritize the paths you review.
 - Evidence for a selected node or edge, including ownership, sudo policy and the identity a service runs as.
 - Before-and-after comparison that stays incomplete when the later scan cannot read the same source.
 - BloodHound OpenGraph export, plus an SVG export of the graph.
-- Optional offline GTFOBins reference matching. A catalog match is context for review, not a verified vulnerability.
 - Optional Graph Neural Network scores that order reviews. The bundled model is a synthetic demonstration and does not prove a vulnerability or that a path is safe.
 
 <p align="center">

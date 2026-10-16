@@ -107,6 +107,30 @@ that LinuxHound does not provide.
 | Before/after path comparison that accounts for missing coverage | ✅ | ❌ | ❌ | ❌ | ❌ |
 | General hardening and compliance audit | ❌ | ❌ | ❌ | ❌ | ✅ |
 
+## LinuxHound features
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph_exec.svg" width="760" alt="LinuxHound demo graph of a conditional privilege path">
+</p>
+
+What the current release can do:
+
+- ✅ Read-only Linux collection of accounts, groups, files, directories, symlinks, sudo rules, capabilities and services
+- ✅ Coverage recorded per source, so an unread policy or directory stays a gap
+- ✅ Access control lists when `getfacl` is available
+- ✅ Loaded systemd services, with an option to skip that query
+- ✅ Optional local Docker metadata, without reading container environments
+- ✅ A permission graph across the collected accounts and resources
+- ✅ Standalone HTML for Explore, Attack paths, Findings, Targets and GNN
+- ✅ Localhost viewer with a private token URL, or a saved HTML file with no server
+- ✅ Candidate privilege chains that keep unresolved prerequisites on the path
+- ✅ Evidence for a selected account, file, service, relationship or finding
+- ✅ Queries for who holds a right, which services are running, and which paths reach a root job
+- ✅ Before-and-after comparison that does not count missing coverage as a fix
+- ✅ BloodHound OpenGraph export with fidelity notes
+- ✅ SVG export of the graph
+- ✅ Optional Graph Neural Network review scores that leave the evidence unchanged
+
 ## Documentation
 
 Continue with the [user guide](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md) for
