@@ -27,7 +27,7 @@ IMAGE_FILES = {
     'images/screenshots/file-relationships.jpg',
     'images/screenshots/filesystem-relationships.jpg',
 }
-GIF_FILES = {'images/linuxhound-graph-path.gif'}
+GIF_FILES = {'images/linuxhound-path.gif'}
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
     re.compile(r'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}'),
