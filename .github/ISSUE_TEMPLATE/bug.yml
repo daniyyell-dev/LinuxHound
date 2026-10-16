@@ -45,3 +45,5 @@ body:
       options:
         - label: This report has no live host snapshot, credential, or secret file contents
           required: true
+        - label: I have read this report, including any text a tool drafted, and I can explain it
+          required: true

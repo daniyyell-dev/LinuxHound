@@ -39,6 +39,16 @@ rather than a public issue. If private reporting is not available, open an
 issue that describes the defect without a live report or a reproduction that
 exposes a real host.
 
+## Review what you submit
+
+Read the issue or the pull request before you send it. That includes the
+description, the code, and any test or document you changed. Do this when you
+wrote the text yourself, and do it when a tool drafted the text or the change
+for you.
+
+You are responsible for what the submission says and what the diff does. If you
+cannot explain a sentence or a change, revise it or leave it out.
+
 ## Issues
 
 Use a GitHub issue template when it fits.

@@ -4,6 +4,7 @@
 
 ## Checks
 
+- [ ] I have read this description and the diff, including any part a tool drafted, and I can explain the change
 - [ ] `python -m unittest discover -s tests -q`
 - [ ] `node tests/test_viewer_graph.js` when the viewer changed
 - [ ] `python scripts/check_public_release.py`

@@ -27,3 +27,10 @@ body:
       description: Limits, evidence, or outputs this change must not weaken.
     validations:
       required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Before you submit
+      options:
+        - label: I have read this proposal, including any text a tool drafted, and I can explain it
+          required: true

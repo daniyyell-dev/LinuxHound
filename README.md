@@ -127,8 +127,9 @@ and [development](https://github.com/daniyyell-dev/LinuxHound/blob/main/GUIDE.md
 
 Bug reports, documentation fixes, tests and collection improvements are welcome.
 Read [CONTRIBUTING.md](https://github.com/daniyyell-dev/LinuxHound/blob/main/CONTRIBUTING.md)
-before opening an issue or a pull request. Do not include a live host report,
-credentials, or an exploit recipe.
+before opening an issue or a pull request. Read the text you are about to send,
+including text a tool drafted, and make sure you can explain it. Do not include
+a live host report, credentials, or an exploit recipe.
 
 ## References and acknowledgements
 
