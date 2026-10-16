@@ -10,6 +10,21 @@ prioritize the paths you review.
 [Graph Neural Network (GNN)](#graph-neural-network-gnn) ·
 [Coverage and limitations](#coverage-privacy-and-limitations)
 
+## Features
+
+- Read-only collection of accounts, groups, files, sudo rules, capabilities and services from the directories you choose.
+- A standalone HTML graph for Explore, Attack paths, Findings and Targets, with no graph database required.
+- Candidate privilege chains that keep unresolved prerequisites on the relationship.
+- Evidence for a selected node or edge, including ownership, sudo policy and the identity a service runs as.
+- Before-and-after comparison that stays incomplete when the later scan cannot read the same source.
+- BloodHound OpenGraph export, plus an SVG export of the graph.
+- Optional offline GTFOBins reference matching. A catalog match is context for review, not a verified vulnerability.
+- Optional Graph Neural Network scores that order reviews. The bundled model is a synthetic demonstration and does not prove a vulnerability or that a path is safe.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph.svg" width="800" alt="LinuxHound demo graph of accounts, services, files and conditional paths">
+</p>
+
 ## Collection and report access
 
 Root is optional; unreadable sources remain coverage gaps. For a fuller authorized
