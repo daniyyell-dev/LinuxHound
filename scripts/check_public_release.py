@@ -26,6 +26,7 @@ IMAGE_FILES = {
     'images/screenshots/root-relationships.jpg',
     'images/screenshots/file-relationships.jpg',
     'images/screenshots/filesystem-relationships.jpg',
+    'images/linuxhound-graph-path.jpg',
 }
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
