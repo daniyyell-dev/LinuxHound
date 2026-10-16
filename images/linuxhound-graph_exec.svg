@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="graph" role="img" aria-label="Linux permissions and conditional attack paths" data-motion-state="idle" data-motion-count="0" viewBox="7.263482051485624 79.51741320427018 757.4466656080069 739.8000587031605" class="motion-disabled" width="757.4466656080069" height="739.8000587031605"><rect x="7.263482051485624" y="79.51741320427018" width="757.4466656080069" height="739.8000587031605" fill="#0b0c0e"/><style>:root {
-  color-scheme: dark;
+<svg xmlns="http://www.w3.org/2000/svg" id="graph" role="img" aria-label="Linux permissions and conditional attack paths" data-motion-state="idle" data-motion-count="0" viewBox="106.0000 76.0000 482.9570 521.2826" class="motion-disabled" width="482.9570" height="521.2826"><style>:root {
+  color-scheme: light dark;
   --canvas: #0b0c0e;
   --panel: #17181b;
   --ink: #f5f5f5;
