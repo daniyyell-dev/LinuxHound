@@ -26,8 +26,8 @@ IMAGE_FILES = {
     'images/screenshots/root-relationships.jpg',
     'images/screenshots/file-relationships.jpg',
     'images/screenshots/filesystem-relationships.jpg',
-    'images/linuxhound-graph-path.jpg',
 }
+GIF_FILES = {'images/linuxhound-graph-path.gif'}
 SECRET_PATTERNS = [
     re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
     re.compile(r'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}'),
@@ -41,7 +41,7 @@ def public_path(name):
     path = Path(name)
     if path.suffix.lower() == '.md' and name not in PUBLIC_MARKDOWN:
         return False
-    if name in ROOT_FILES or name in EXTRA_FILES or name in MODEL_FILES or name in IMAGE_FILES:
+    if name in ROOT_FILES or name in EXTRA_FILES or name in MODEL_FILES or name in IMAGE_FILES or name in GIF_FILES:
         return True
     if path.parts[0] not in SOURCE_DIRS:
         return False
@@ -98,6 +98,11 @@ def main():
         try:
             if name in IMAGE_FILES:
                 validate_image(path.read_bytes())
+                content = ''
+            elif name in GIF_FILES:
+                raw = path.read_bytes()
+                if not raw.startswith(b'GIF89a') or not 8 <= len(raw) <= 4 * 1024 * 1024:
+                    raise ValueError('invalid graph animation')
                 content = ''
             elif name == 'linuxhound/models/demo-path.safetensors':
                 raw = path.read_bytes()
