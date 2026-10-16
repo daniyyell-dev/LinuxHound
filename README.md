@@ -35,7 +35,7 @@ can run elsewhere with Python; it does not audit that operating system.
 ## LinuxHound features
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph_exec.svg" width="520" alt="LinuxHound demo graph of a conditional privilege path">
+  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph-path.svg" width="520" alt="LinuxHound demo graph of a conditional privilege path">
 </p>
 
 What the current release can do:
