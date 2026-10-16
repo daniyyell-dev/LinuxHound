@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="graph" role="img" aria-label="Linux permissions and conditional attack paths" data-motion-state="idle" data-motion-count="0" viewBox="106.0000 76.0000 482.9570 521.2826" class="motion-disabled" width="482.9570" height="521.2826"><rect x="106" y="76" width="482.9570" height="521.2826" fill="#ffffff"/><style>:root {
-  color-scheme: light;
-  --canvas: #ffffff;
+<svg xmlns="http://www.w3.org/2000/svg" id="graph" role="img" aria-label="Linux permissions and conditional attack paths" data-motion-state="idle" data-motion-count="0" viewBox="106.0000 76.0000 482.9570 521.2826" class="motion-disabled" width="482.9570" height="521.2826"><style>:root {
+  color-scheme: light dark;
+  --canvas: #0b0c0e;
   --panel: #17181b;
   --ink: #f5f5f5;
   --muted: #a9adb4;
@@ -104,24 +104,24 @@ label { display: block; margin: 17px 0 6px; color: #c2c8d3; font-size: 12px; }
 .graph-node.selected .shape { stroke: #ffffff; stroke-width: 3; }
 .graph-node .icon { fill: none; stroke: var(--node-color,#e4eaf6); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 .graph-node .risk-ring { fill: none; stroke: var(--red); stroke-width: 2; }
-.graph-node .target-ring { fill: none; stroke: #111111; stroke-width: 2; }
+.graph-node .target-ring { fill: none; stroke: #fafafa; stroke-width: 2; }
 .graph-node .isolated-ring { fill: none; stroke: #a69ab9; stroke-dasharray: 3 4; stroke-width: 1.5; }
 .graph-node.connected .shape { stroke: #ffffff; }
 .graph-node.dimmed { opacity: .3; }
-.graph-node .node-label { font: 12px -apple-system, sans-serif; fill: #1a1d22; paint-order: stroke; stroke: #ffffff; stroke-width: 5; stroke-linejoin: round; pointer-events: none; }
-.graph-node .node-kind { font: 9px -apple-system, sans-serif; fill: #4b5563; pointer-events: none; }
+.graph-node .node-label { font: 12px -apple-system, sans-serif; fill: #e5ebf5; paint-order: stroke; stroke: var(--canvas); stroke-width: 5; stroke-linejoin: round; pointer-events: none; }
+.graph-node .node-kind { font: 9px -apple-system, sans-serif; fill: #9ba8bd; pointer-events: none; }
 .edge { fill: none; stroke: #8d9bb0; stroke-width: 1.3; opacity: .5; }
 .edge.conditional { stroke: #8d9bb0; stroke-dasharray: 5 4; opacity: .8; }
 .edge.attack { stroke: var(--red); stroke-width: 2.3; opacity: .9; }
 .edge.highlight { stroke: #d7e3e8; stroke-width: 3; opacity: 1; }
 .edge.relationship, .edge.incident { stroke: #d7e3e8; stroke-width: 2.5; opacity: 1; }
 .edge.attack.highlight, .edge.attack.relationship, .edge.attack.incident { stroke: #ff2636; }
-.edge-label.attack.relationship { fill: #b42318; }
+.edge-label.attack.relationship { fill: #ffc2d0; }
 .edge.dimmed { opacity: .13; }
 .edge-hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; }
-.edge-label { font: 10px -apple-system, sans-serif; fill: #374151; paint-order: stroke; stroke: #ffffff; stroke-width: 5; pointer-events: none; }
-.edge-label.attack { fill: #b42318; }
-.edge-label.relationship { fill: #1f2937; }
+.edge-label { font: 10px -apple-system, sans-serif; fill: #afbbcf; paint-order: stroke; stroke: var(--canvas); stroke-width: 5; pointer-events: none; }
+.edge-label.attack { fill: #ffc2d0; }
+.edge-label.relationship { fill: #e4ecef; }
 .legend { padding: 10px 16px; display: flex; gap: 13px; flex-wrap: wrap; border-top: 1px solid var(--line); background: #151619; color: #a4afc2; font-size: 9px; }
 .legend span { display: flex; align-items: center; gap: 5px; }
 .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; background: #79adff; }
