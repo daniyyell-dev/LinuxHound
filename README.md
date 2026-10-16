@@ -32,24 +32,29 @@
 targets. Saved HTML reports open in a modern desktop browser. The demo
 can run elsewhere with Python; it does not audit that operating system.
 
-## Features
-
-- Read-only collection of accounts, groups, files, sudo rules, capabilities and services from the directories you choose.
-- A standalone HTML graph for Explore, Attack paths, Findings and Targets, with no graph database required.
-- Candidate privilege chains that keep unresolved prerequisites on the relationship.
-- Evidence for a selected node or edge, including ownership, sudo policy and the identity a service runs as.
-- Before-and-after comparison that stays incomplete when the later scan cannot read the same source.
-- BloodHound OpenGraph export, plus an SVG export of the graph.
-- Optional offline GTFOBins reference matching. A catalog match is context for review, not a verified vulnerability.
-- Optional Graph Neural Network scores that order reviews. The bundled model is a synthetic demonstration and does not prove a vulnerability or that a path is safe.
+## LinuxHound features
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph.svg" width="800" alt="LinuxHound demo graph of accounts, services, files and conditional paths">
+  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph_exec.svg" width="520" alt="LinuxHound demo graph of a conditional privilege path">
 </p>
 
-The graph above comes from the LinuxHound demo. Red relationships mark modeled
-trust boundaries, while dashed relationships retain unresolved prerequisites.
-Following a connection helps explain access, but does not establish that an exploit works.
+What the current release can do:
+
+- ✅ Read-only Linux collection of accounts, groups, files, directories, symlinks, sudo rules, capabilities and services
+- ✅ Coverage recorded per source, so an unread policy or directory stays a gap
+- ✅ Access control lists when `getfacl` is available
+- ✅ Loaded systemd services, with an option to skip that query
+- ✅ Optional local Docker metadata, without reading container environments
+- ✅ A permission graph across the collected accounts and resources
+- ✅ Standalone HTML for Explore, Attack paths, Findings, Targets and GNN
+- ✅ Localhost viewer with a private token URL, or a saved HTML file with no server
+- ✅ Candidate privilege chains that keep unresolved prerequisites on the path
+- ✅ Evidence for a selected account, file, service, relationship or finding
+- ✅ Queries for who holds a right, which services are running, and which paths reach a root job
+- ✅ Before-and-after comparison that does not count missing coverage as a fix
+- ✅ BloodHound OpenGraph export with fidelity notes
+- ✅ SVG export of the graph
+- ✅ Optional Graph Neural Network review scores that leave the evidence unchanged
 
 ## Quick start: Linux
 
@@ -107,30 +112,6 @@ that LinuxHound does not provide.
 | Interactive, standalone HTML graph | ✅ | ❌ | ✅ | ❌ | ❌ |
 | Before/after path comparison that accounts for missing coverage | ✅ | ❌ | ❌ | ❌ | ❌ |
 | General hardening and compliance audit | ❌ | ❌ | ❌ | ❌ | ✅ |
-
-## LinuxHound features
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/daniyyell-dev/LinuxHound/main/images/linuxhound-graph_exec.svg" width="520" alt="LinuxHound demo graph of a conditional privilege path">
-</p>
-
-What the current release can do:
-
-- ✅ Read-only Linux collection of accounts, groups, files, directories, symlinks, sudo rules, capabilities and services
-- ✅ Coverage recorded per source, so an unread policy or directory stays a gap
-- ✅ Access control lists when `getfacl` is available
-- ✅ Loaded systemd services, with an option to skip that query
-- ✅ Optional local Docker metadata, without reading container environments
-- ✅ A permission graph across the collected accounts and resources
-- ✅ Standalone HTML for Explore, Attack paths, Findings, Targets and GNN
-- ✅ Localhost viewer with a private token URL, or a saved HTML file with no server
-- ✅ Candidate privilege chains that keep unresolved prerequisites on the path
-- ✅ Evidence for a selected account, file, service, relationship or finding
-- ✅ Queries for who holds a right, which services are running, and which paths reach a root job
-- ✅ Before-and-after comparison that does not count missing coverage as a fix
-- ✅ BloodHound OpenGraph export with fidelity notes
-- ✅ SVG export of the graph
-- ✅ Optional Graph Neural Network review scores that leave the evidence unchanged
 
 ## Documentation
 
