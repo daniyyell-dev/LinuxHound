@@ -1,7 +1,7 @@
 # Contributing to LinuxHound
 
-Thank you for helping improve LinuxHound. The useful changes are bug fixes,
-clearer documentation, tests, and collection or viewer behaviour that stays
+Thank you for helping improve LinuxHound, The useful changes are bug fixes,
+clearer documentation, tests, features and collection or viewer behaviour that stays
 within the limits already stated in the [user guide](GUIDE.md).
 
 Contributions are licensed under [Apache-2.0](LICENSE), the same license as
